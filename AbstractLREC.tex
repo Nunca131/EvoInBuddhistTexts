@@ -34,63 +34,61 @@
   abundance high level concepts in the writings of Buddhist \TODO{schools}
   behave akin to characters in biological evolution and thus make it
   possible to infer the history of these \TODO{schools} from this type of
-  data alone. We choose this example because the \textit{SAT
-    Daiz{\=o}ky{\=o} Text Database} \cite{***} provides a comprehensive
-  corpus, the topics of the writings concentrate on a limited number of
-  relatively clearly defined topics, and the history of the \TODO{schools}
-  has been well researched and thus provides a well-understood framework to
-  compare against.
+  data alone. 
 
+  The \textit{SAT Daiz{\=o}ky{\=o} Text Database} \cite{***} is a
+  digitalized collection of 2500 years of Buddhist canonical texts. We
+  chose this corpus because it concentrate on a limited number of
+  relatively clearly defined topics, the texts are dated, and the history
+  and relationships of the Buddhist schools that produced them has been
+  extensively investigated. It therefore is ideally suited for a
+  chronological analysis and computational results can be compared directly
+  to established knowledge. 
 
-  In this sense we want to study the topical structure of the \textit{SAT
-    Daiz{\=o}ky{\=o} Text Database}. The process towards this analysis will
-  also create a unique resource.  We need to annotate single words, word
-  types and a parse tree in order to identify topics and important textual
-  properties . Furthermore, it is necessary to annotate the identified
-  topics in the texts. Especially the word segmentation and POS-tagging
-  task is not straight forward since the text source is not standard
-  chinese.  Available tools and models which allow for automatic annotation
-  of chineses source are conditioned to standard modern chinese. For this
-  reason we had to create new separation and tagging models based on
-  comparable annotated resources \cite{Lee14}.
-
-
-  Our main tools for the assessment of the topic structure is topic
-  modelling \cite{Blei12}.  We will apply the well understood LDA Model to
-  the ressources. The resulting topical structure can then be used to
-  reveal the topic preference of different times and \TODO{schools} encoded
-  in the text. We will contribute the processed corpus as a resource for
+  The topical structure of the Daiz{\=o}ky{\=o} is investigated using topic
+  modelling \cite{Blei12}, a machine learning technique that aims at
+  discovering abstract ``topics'' that occur in a collection of documents
+  defined in terms of the overrepresented appearance of certain subsets of
+  words. In the process, we create a unique resource. First, we need to
+  annotate single words, word types and a parse tree in order to identify
+  topics and important textual properties. Second, topics are annotated in
+  the texts.  In particular word segmentation and POS-tagging task is not
+  straightforward since the text source is not standard Chinese. Since
+  available tools and models for the automatic annotation of Chinese text
+  resources are conditioned to standard modern chinese, we had to create
+  new separation and tagging models based on comparable annotated resources
+  \cite{Lee14}.  We will contribute the processed corpus as a resource for
   future research on original texts reflecting different buddhist
   \TODO{schools}.
 
-  \TODO{(the paragraph above is just over 200 words, so 2000 words is about
-    4 pages or so, hence are allowed a bit of detail!)}
+  \textbf{Outline of the computational workflow.} The corpus was acquired
+  from the web presence by a web scraper. The content is semi-structured by
+  references to the source and the sentence number for each line of
+  text. We retained this structure for our final corpus and created a
+  source format that links every line of text to its unique identifier
+  drawn from the original web source. We defined one scraped web page as a
+  single document for the modelling process since this also reflects the
+  text structure of the original sources.
+    
+  The main tools for token separation and POS-tagging of the sources where
+  the Stanford Word Segmenter and the Stanford POS-Tagger. Both
+  distributions contain pre-trained models Chinese text processing. The
+  performance of these models, however, proved unsatisfactory for the
+  Daiz{\=o}ky{\=o} corpus. As a consequence we had to retrain the tools
+  with an comparable annotated text source conforming to the properties,
+  word forms, and \TODO{systectic} features of our target text source.  We
+  identified \cite{Lee:12,Wong:16} as text sources in processable form that
+  were well suited for retrain our the models for POS-tagging and 
+  word separation. The trained models are included with the
+  processed version of the \textit{SAT Daiz{\=o}ky{\=o} Text Database},
+  which we published \TODO{URL?}.  
 
+  We constructed topic models for the processed corpus using the well
+  understood LDA approach \cite{Blei03,GriffithStyvers05}.
 
-The corpus we used in this study is the \textit{The SAT Daiz{\=o}ky{\=o} Text Database} - a digitalized
-collection of 2500 years of Buddhist canonical texts which are dated. This offers the 
-perfect starting point for a chronological analysis. The corpus was acquired from the 
-web presence by a web scraper. The content is semi structured by references to the 
-source and the sentence number for  each line of text. We kept this structure for our 
-final corpus and created a source format which links every line of text to its unique 
-identifier drawn from the original web source.
+%%%  ENDE DER AUSBAUSTRECKE 
 
-
-The main tools for token separation and POS-tagging of the sources where
-the Stanford Word Segmenter and the Stanford POS-Tagger. Both distributions
-contain pre-trained models Chinese text processing. After a first test we
-had to acknowledge the fact, that the performance of those models is
-unsatisfactory w.r.t. this text source. We had to retrain the tools with an
-annotated comparable text source which carries the properties, wordforms
-and systectic features of our target test source. With \cite{Lee:12,
-  Wong:16} we found a suited text source which is processable in order to
-retrain our the models for POS-tagging and word separation. The trained
-models are also included to the processed version of the \textit{SAT
-  Daiz{\=o}ky{\=o} Text Database} which we published. On this processed
-text we applied topic modelling via the well understood LDA model [Blei03,
-GriffithStyvers05].  We defined one scraped web page as a single document
-for the modelling process since this also reflects the text structure of
-the original sources. We considered multiple quality ensuring techniques in
+We considered multiple quality ensuring techniques in
 order to infer an optimal model. Those steps include the assessment of the
 topic interpretability and the topic reliability. Both are part of a
 transparent and reproducible methodology setup in topic model based content
@@ -123,6 +121,25 @@ interpretability. We tested several topic solutions and assessed the
 qualöity measures. The results can be found in table 1. It shows that the
 optimal solution is XXX which is also confirmed by the word intrusion tests
 and quality checks carried out by domain experts.
+
+
+
+
+
+  Our main tools for the assessment of the topic structure is topic
+  modelling .  We will apply the well understood LDA Model to
+  the ressources. The resulting topical structure can then be used to
+  reveal the topic preference of different times and \TODO{schools} encoded
+  in the text.
+
+  \TODO{(the paragraph above is just over 200 words, so 2000 words is about
+    4 pages or so, hence are allowed a bit of detail!)}
+
+
+
+
+
+
 
 Quality CHECKS Prof. Kleine
 
