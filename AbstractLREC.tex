@@ -2,10 +2,15 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{natbib}
+\usepackage{color}
+\newcommand{\TODO}[1]{\begingroup\color{red}#1\endgroup}
+\newcommand{\PFS}[1]{\begingroup\color{blue}#1\endgroup}
+
 
 %opening
-\title{Does a Phylogeny of Topics Recapitulate the History of Ideas and Institutions? 
-A Computational Abuse of the Daizōkyō }
+\title{Does a Phylogeny of Topics Recapitulate the History of Ideas and 
+  Institutions? \\
+  A Computational Abuse of the Daiz{\=o}ky{\=o}}
 \author{}
 
 \begin{document}
@@ -13,49 +18,56 @@ A Computational Abuse of the Daizōkyō }
 \maketitle
 
 \begin{abstract}
-
-Computational approaches have in recent years attempted to reproduce workflows 
-in the humanities with the aim to leverage to power of increasingly large amount 
-of data. The most prolific area of application is historical linguistics, where 
-quantitative methods have had a long tradition in the field. [oder sowas, Nancy, 
-add a couple of refs]. Other types of question in historical sciences also 
-appear to be amenable to quantitative computational investigations. In \cite{Laubichler:13}, 
-for the authors advocate a computational big data approach to the history of 
-sciences. \cite{Rockmore:16} recently investigated the reuse of ideal in national 
-constitutions at this level. In the present study we ask whether historical 
-relationships are reflected in and can be reconstructed using methods adapted 
-from phylogenetics. More specifically, we ask whether the presence and abundance 
-high level concepts in the writings of Buddhist schools behave akin to characters 
-in biological evolution and thus make it possible to infer the history of these
-schools from this type of data alone. We choose this example because the  "The SAT
-Daizōkyō Text Database"  provides a comprehensive corpus, the topics of the 
-writings concentrate on a limited number of relatively clearly defined topics, 
-and the history of the  schools has been well researched and thus provides a 
-well-understood framework to compare against. 
-
-
-In this sense we want to study the topical structure of the “SAT Daizōkyō Text 
-Database”. The process towards this analysis will also create a unique resource. 
-We need to annotate single words, word types and a parse tree in order to identify 
-topics and important textual properties . Furthermore, it is necessary to annotate 
-the identified topics in the texts. Especially the word segmentation and POS-tagging 
-task is not straight forward since the text source is not standard chinese. 
-Available tools and models which allow for automatic annotation of chineses source 
-are conditioned to standard modern chinese. For this reason we had to create new 
-separation and tagging models based on comparable annotated resources [Lee14].
+  Computational approaches have in recent years attempted to reproduce
+  workflows in the humanities with the aim to leverage to power of
+  increasingly large amount of data. The most prolific area of application
+  is historical linguistics, where quantitative methods have had a long
+  tradition in the field. \TODO{[oder sowas, Nancy, add a couple of
+    refs]}. Other types of question in historical sciences also appear to
+  be amenable to quantitative computational investigations. In
+  \cite{Laubichler:13}, for the authors advocate a computational big data
+  approach to the history of sciences. \cite{Rockmore:16} recently
+  investigated the reuse of ideal in national constitutions at this
+  level. In the present study we ask whether historical relationships are
+  reflected in and can be reconstructed using methods adapted from
+  phylogenetics. More specifically, we ask whether the presence and
+  abundance high level concepts in the writings of Buddhist \TODO{schools}
+  behave akin to characters in biological evolution and thus make it
+  possible to infer the history of these \TODO{schools} from this type of
+  data alone. We choose this example because the \textit{SAT
+    Daiz{\=o}ky{\=o} Text Database} \cite{***} provides a comprehensive
+  corpus, the topics of the writings concentrate on a limited number of
+  relatively clearly defined topics, and the history of the \TODO{schools}
+  has been well researched and thus provides a well-understood framework to
+  compare against.
 
 
-Our main tools for the assessment of the topic structure is topic modelling [Blei12]. 
-We will apply the well understood LDA Model to the ressources. The resulting topical 
-structure can then be used to reveal the topic preference of different times and
-schools encoded in the text. We will contribute the processed corpus as a resource 
-for future research on original texts reflecting different buddhist "schools".
+  In this sense we want to study the topical structure of the \textit{SAT
+    Daiz{\=o}ky{\=o} Text Database}. The process towards this analysis will
+  also create a unique resource.  We need to annotate single words, word
+  types and a parse tree in order to identify topics and important textual
+  properties . Furthermore, it is necessary to annotate the identified
+  topics in the texts. Especially the word segmentation and POS-tagging
+  task is not straight forward since the text source is not standard
+  chinese.  Available tools and models which allow for automatic annotation
+  of chineses source are conditioned to standard modern chinese. For this
+  reason we had to create new separation and tagging models based on
+  comparable annotated resources \cite{Lee14}.
 
-(the paragraph above is just over 200 words, so 2000 words is about 4 pages or so, 
-hence are allowed a bit of detail!)
+
+  Our main tools for the assessment of the topic structure is topic
+  modelling \cite{Blei12}.  We will apply the well understood LDA Model to
+  the ressources. The resulting topical structure can then be used to
+  reveal the topic preference of different times and \TODO{schools} encoded
+  in the text. We will contribute the processed corpus as a resource for
+  future research on original texts reflecting different buddhist
+  \TODO{schools}.
+
+  \TODO{(the paragraph above is just over 200 words, so 2000 words is about
+    4 pages or so, hence are allowed a bit of detail!)}
 
 
-The corpus we used in this study is the The SAT Daizōkyō Text Database - a digitalized
+The corpus we used in this study is the \textit{The SAT Daiz{\=o}ky{\=o} Text Database} - a digitalized
 collection of 2500 years of Buddhist canonical texts which are dated. This offers the 
 perfect starting point for a chronological analysis. The corpus was acquired from the 
 web presence by a web scraper. The content is semi structured by references to the 
@@ -64,45 +76,53 @@ final corpus and created a source format which links every line of text to its u
 identifier drawn from the original web source.
 
 
-The main  tools for token separation and POS-tagging of the sources where the Stanford 
-Word Segmenter and the Stanford POS-Tagger. Both distributions contain pre-trained 
-models Chinese text processing. After a first test we had to acknowledge the fact, that 
-the performance of those models is unsatisfactory w.r.t. this text source. We had to 
-retrain the tools with an annotated comparable text source which carries the properties, 
-wordforms and systectic features of our target test source. With \cite{Lee:12, Wong:16} we 
-found a suited text source which is processable in order to retrain our the models for 
-POS-tagging and word separation. The trained models are also included to the processed 
-version of the “SAT Daizōkyō Text Database” which we published. On this processed text 
-we applied topic modelling via the well understood LDA model [Blei03, GriffithStyvers05]. 
-We defined one scraped web page as a single document for the modelling process since this 
-also reflects the text structure of the original sources. We considered multiple quality
-ensuring techniques in order to infer an optimal model. Those steps include the 
-assessment of the topic interpretability and the topic reliability. Both are part of a
-transparent and reproducible methodology setup in topic model based content research. 
-In detail the interpretability can be asses by two measures. With the coherence measure 
-[cohen] we can determine the specificity of the topics in terms of uniqueness of the 
-topic distributions for each topic. With the word intrusion test [Wang] we implement a 
-human judgment on the topic quality to the model selection process. Both measures deliver 
-a comparable quality assessment w.r.t. different topic solutions. With those measures we
-do not only rely on measures as perplexity, likelihood or human judgment in order to 
-select a good topic solution but also on quantities which asses the topic solution with 
-a novel measures on the semantic interpretability. Reproducibility is also an issue when 
-applying topic models to text. Existing studies show that in repeated runs of the LDA
-inference on the same dataset reproduce only 65 - 80\% of the topic solutions throughout 
-all runs [Niekler12, Koltsov14]. For content research which strongly relies on the 
-interpretation of the topics this is unsatisfactory and topic selection criterias are 
-hard to explain in a transparent and reproducible manner. Instead we applies techniques
-which raise the topic stability throughout different runs of the model inference, known 
-as regularization. One very promising approach to influence the initialization of the 
-inference. Normally, we initialize the topic assignments beforehand randomly. On the other
-hand we could seed the random initialization and hopefully find a similar topic solution
-throughout different runs. However, the best solution so far is the initialization of the
-topic assignments with a prior semantic clustering of the word association that can be 
-found in the text [Lancichinetti15]. It can be shown the the topic reproducibility is 
-raised by 15\% without losing interpretability. We tested several topic solutions and 
-assessed the qualöity measures. The results can be found in table 1. It shows that the 
-optimal solution is XXX which is also confirmed by the word intrusion tests and quality
-checks carried out by domain experts.
+The main tools for token separation and POS-tagging of the sources where
+the Stanford Word Segmenter and the Stanford POS-Tagger. Both distributions
+contain pre-trained models Chinese text processing. After a first test we
+had to acknowledge the fact, that the performance of those models is
+unsatisfactory w.r.t. this text source. We had to retrain the tools with an
+annotated comparable text source which carries the properties, wordforms
+and systectic features of our target test source. With \cite{Lee:12,
+  Wong:16} we found a suited text source which is processable in order to
+retrain our the models for POS-tagging and word separation. The trained
+models are also included to the processed version of the \textit{SAT
+  Daiz{\=o}ky{\=o} Text Database} which we published. On this processed
+text we applied topic modelling via the well understood LDA model [Blei03,
+GriffithStyvers05].  We defined one scraped web page as a single document
+for the modelling process since this also reflects the text structure of
+the original sources. We considered multiple quality ensuring techniques in
+order to infer an optimal model. Those steps include the assessment of the
+topic interpretability and the topic reliability. Both are part of a
+transparent and reproducible methodology setup in topic model based content
+research.  In detail the interpretability can be asses by two
+measures. With the coherence measure [cohen] we can determine the
+specificity of the topics in terms of uniqueness of the topic distributions
+for each topic. With the word intrusion test [Wang] we implement a human
+judgment on the topic quality to the model selection process. Both measures
+deliver a comparable quality assessment w.r.t. different topic
+solutions. With those measures we do not only rely on measures as
+perplexity, likelihood or human judgment in order to select a good topic
+solution but also on quantities which asses the topic solution with a novel
+measures on the semantic interpretability. Reproducibility is also an issue
+when applying topic models to text. Existing studies show that in repeated
+runs of the LDA inference on the same dataset reproduce only 65 - 80\% of
+the topic solutions throughout all runs [Niekler12, Koltsov14]. For content
+research which strongly relies on the interpretation of the topics this is
+unsatisfactory and topic selection criterias are hard to explain in a
+transparent and reproducible manner. Instead we applies techniques which
+raise the topic stability throughout different runs of the model inference,
+known as regularization. One very promising approach to influence the
+initialization of the inference. Normally, we initialize the topic
+assignments beforehand randomly. On the other hand we could seed the random
+initialization and hopefully find a similar topic solution throughout
+different runs. However, the best solution so far is the initialization of
+the topic assignments with a prior semantic clustering of the word
+association that can be found in the text [Lancichinetti15]. It can be
+shown the the topic reproducibility is raised by 15\% without losing
+interpretability. We tested several topic solutions and assessed the
+qualöity measures. The results can be found in table 1. It shows that the
+optimal solution is XXX which is also confirmed by the word intrusion tests
+and quality checks carried out by domain experts.
 
 Quality CHECKS Prof. Kleine
 
@@ -156,10 +176,9 @@ the context of natural language evolution).
 
 
 
+\TODO{- are there topics distinguishable due to geography or history?}
 
-→ are there topics distinguishable due to geography or history?
-
-- checking their consistency to insights from history or religious findings, and hence validating the hypothesis stated above.
+\TODO{- checking their consistency to insights from history or religious findings, and hence validating the hypothesis stated above.}
 
 
 
