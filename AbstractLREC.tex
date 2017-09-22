@@ -1,0 +1,171 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{natbib}
+
+%opening
+\title{Does a Phylogeny of Topics Recapitulate the History of Ideas and Institutions? 
+A Computational Abuse of the Daizōkyō }
+\author{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+Computational approaches have in recent years attempted to reproduce workflows 
+in the humanities with the aim to leverage to power of increasingly large amount 
+of data. The most prolific area of application is historical linguistics, where 
+quantitative methods have had a long tradition in the field. [oder sowas, Nancy, 
+add a couple of refs]. Other types of question in historical sciences also 
+appear to be amenable to quantitative computational investigations. In \cite{Laubichler:13}, 
+for the authors advocate a computational big data approach to the history of 
+sciences. \cite{Rockmore:16} recently investigated the reuse of ideal in national 
+constitutions at this level. In the present study we ask whether historical 
+relationships are reflected in and can be reconstructed using methods adapted 
+from phylogenetics. More specifically, we ask whether the presence and abundance 
+high level concepts in the writings of Buddhist schools behave akin to characters 
+in biological evolution and thus make it possible to infer the history of these
+schools from this type of data alone. We choose this example because the  "The SAT
+Daizōkyō Text Database"  provides a comprehensive corpus, the topics of the 
+writings concentrate on a limited number of relatively clearly defined topics, 
+and the history of the  schools has been well researched and thus provides a 
+well-understood framework to compare against. 
+
+
+In this sense we want to study the topical structure of the “SAT Daizōkyō Text 
+Database”. The process towards this analysis will also create a unique resource. 
+We need to annotate single words, word types and a parse tree in order to identify 
+topics and important textual properties . Furthermore, it is necessary to annotate 
+the identified topics in the texts. Especially the word segmentation and POS-tagging 
+task is not straight forward since the text source is not standard chinese. 
+Available tools and models which allow for automatic annotation of chineses source 
+are conditioned to standard modern chinese. For this reason we had to create new 
+separation and tagging models based on comparable annotated resources [Lee14].
+
+
+Our main tools for the assessment of the topic structure is topic modelling [Blei12]. 
+We will apply the well understood LDA Model to the ressources. The resulting topical 
+structure can then be used to reveal the topic preference of different times and
+schools encoded in the text. We will contribute the processed corpus as a resource 
+for future research on original texts reflecting different buddhist "schools".
+
+(the paragraph above is just over 200 words, so 2000 words is about 4 pages or so, 
+hence are allowed a bit of detail!)
+
+
+The corpus we used in this study is the The SAT Daizōkyō Text Database - a digitalized
+collection of 2500 years of Buddhist canonical texts which are dated. This offers the 
+perfect starting point for a chronological analysis. The corpus was acquired from the 
+web presence by a web scraper. The content is semi structured by references to the 
+source and the sentence number for  each line of text. We kept this structure for our 
+final corpus and created a source format which links every line of text to its unique 
+identifier drawn from the original web source.
+
+
+The main  tools for token separation and POS-tagging of the sources where the Stanford 
+Word Segmenter and the Stanford POS-Tagger. Both distributions contain pre-trained 
+models Chinese text processing. After a first test we had to acknowledge the fact, that 
+the performance of those models is unsatisfactory w.r.t. this text source. We had to 
+retrain the tools with an annotated comparable text source which carries the properties, 
+wordforms and systectic features of our target test source. With \cite{Lee:12, Wong:16} we 
+found a suited text source which is processable in order to retrain our the models for 
+POS-tagging and word separation. The trained models are also included to the processed 
+version of the “SAT Daizōkyō Text Database” which we published. On this processed text 
+we applied topic modelling via the well understood LDA model [Blei03, GriffithStyvers05]. 
+We defined one scraped web page as a single document for the modelling process since this 
+also reflects the text structure of the original sources. We considered multiple quality
+ensuring techniques in order to infer an optimal model. Those steps include the 
+assessment of the topic interpretability and the topic reliability. Both are part of a
+transparent and reproducible methodology setup in topic model based content research. 
+In detail the interpretability can be asses by two measures. With the coherence measure 
+[cohen] we can determine the specificity of the topics in terms of uniqueness of the 
+topic distributions for each topic. With the word intrusion test [Wang] we implement a 
+human judgment on the topic quality to the model selection process. Both measures deliver 
+a comparable quality assessment w.r.t. different topic solutions. With those measures we
+do not only rely on measures as perplexity, likelihood or human judgment in order to 
+select a good topic solution but also on quantities which asses the topic solution with 
+a novel measures on the semantic interpretability. Reproducibility is also an issue when 
+applying topic models to text. Existing studies show that in repeated runs of the LDA
+inference on the same dataset reproduce only 65 - 80\% of the topic solutions throughout 
+all runs [Niekler12, Koltsov14]. For content research which strongly relies on the 
+interpretation of the topics this is unsatisfactory and topic selection criterias are 
+hard to explain in a transparent and reproducible manner. Instead we applies techniques
+which raise the topic stability throughout different runs of the model inference, known 
+as regularization. One very promising approach to influence the initialization of the 
+inference. Normally, we initialize the topic assignments beforehand randomly. On the other
+hand we could seed the random initialization and hopefully find a similar topic solution
+throughout different runs. However, the best solution so far is the initialization of the
+topic assignments with a prior semantic clustering of the word association that can be 
+found in the text [Lancichinetti15]. It can be shown the the topic reproducibility is 
+raised by 15\% without losing interpretability. We tested several topic solutions and 
+assessed the qualöity measures. The results can be found in table 1. It shows that the 
+optimal solution is XXX which is also confirmed by the word intrusion tests and quality
+checks carried out by domain experts.
+
+Quality CHECKS Prof. Kleine
+
+Through this methodology we developed a sound and robust topic solution which can in turn
+be used to clarify out research hypothesis. In this step of our research we can now name
+the topics for later reference. We can decide between different approaches. On one hand 
+we could use term ordering techniques for topic modelling to sort the topic via 
+probability, frequency, or specificity (similar as tf/idf but for topics). This leads to 
+interpretable word lists which could be used as unique identifiers for the topics. On
+the other hand we could augment the description with a detailed commentation on the 
+semantic properties. Such a detailed description ensures the later understanding for 
+interpretation decisions. The result is documented in figure 1 where we present 3 
+translated samples from our text source.
+
+- description of technicalities:
+  * corpus
+  * preprocessing: crawl data and segmentation of words
+  * extraction of features through topic modelling
+  * determination of different buddhist "schools" (technical term here please)
+  * naming the actual topics (technical term here as well and why it is so hard to do it)
+  * assessment of the quantity of phylogenetic signal
+  * discrimination of volatile (rapidly changing) topics versus persistent topic 
+  (mostly staying the same) 
+
+
+Now we are in a position to quantify, for each school, the emphasis given a particular 
+topic. 
+
+
+In the simplest case, we compute the relative fraction p(S,T) of the texts from schools S 
+that pertain to topic T. Since some topics are inherently more prevalent than others, we 
+rather use the corresponding log-likelihood L(S,T) = log p(S,T)/p(T). Each school is thus
+represented by a vector of topic importances that can be used to evaluate differences 
+between schools. The determine p(S,T) and p(T) utilizing the rank-1 metric. In detail we 
+count for every pager, e.g. document, the most probably topic and aggregate the counts 
+for all documents w.r.t the school S and topic S. 
+
+
+We intend to explore both distance based methods and character-based methods commonly 
+used in phylogenetics. Simple distance measures that can be expected to behave approximately
+additively are the sum over the absolute values of differences of topic importance or a 
+thresholded variant thereof. Such distance measures also have the added value that the 
+tree-like structure of the data can be assessed a priori, i.e., without having to construct 
+a phylogenetic tree \cite{Misof:14}. Thresholding the values of L(S,T) themselves, on the other 
+hand, converts the data into discrete characters corresponding to the topics, with 
+“overrepresented” and “underrepresented”  as binary states. In this form, the data can 
+analyzed with maximum parsimony methods. In principle, they are also amenable to maximum 
+likelihood methods; however, at this point it seems difficult to argue for specific 
+probabilistic transition models (but see \cite{Hruschka:15} for a fully probabilistic model in 
+the context of natural language evolution).
+
+
+
+
+→ are there topics distinguishable due to geography or history?
+
+- checking their consistency to insights from history or religious findings, and hence validating the hypothesis stated above.
+
+
+
+\end{abstract}
+
+\bibliographystyle{abbrvnat}
+\bibliography{AbstractLREC.bib}
+
+\end{document}
