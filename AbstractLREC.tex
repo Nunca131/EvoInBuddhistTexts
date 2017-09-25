@@ -36,6 +36,8 @@ Peter F. Stadler$^{1,2,4}$}
 } 
 \date{} 
 
+% Each article must include an abstract of 150 to 200 words in Times New Roman
+% 9 with interlinear spacing of 10 pt. 
 
 \abstract{Computational workflows have been devised in a variety of
   research areas in the the humanities, in particular linguistics and
@@ -47,17 +49,19 @@ Peter F. Stadler$^{1,2,4}$}
   reconstructed using methods adapted from phylogenetics. More
   specifically, we ask whether the presence and abundance high level
   concepts in the writings of Buddhist \TODO{schools} behave akin to
-  characters in biological evolution and thus make it possible to infer the
-  history of these \TODO{schools} from this type of data alone.
-  \TODO{resource aspect} 
-% Each article must include an abstract of 150 to 200 words in Times New Roman
-% 9 with interlinear spacing of 10 pt. The heading Abstract should be
-% centred, font Times New Roman 10 bold. This short abstract will also be used
-% for producing the Booklet of Abstracts (PDF) containing the abstracts of all
-% papers presented at the Conference. 
-\\ 
-\newline \Keywords{keyword1, keyword2,
-keyword3} }
+  characters in biological evolution and thus make it possible to infer
+  their relationsships of descent from this type of data alone.
+  %
+  We use Topic Modelling to describe the contents of documents in an
+  unsupervised and unbiased manner. To this end, we first had to train the
+  Stanford Word Segmenter and POS-Tagger for use on the Daiz{\=o}ky{\=o},
+  which does not conform to available models for standard Chinese. The
+  annotation of single words, word types and a parse tree as well as the
+  topic annotation of entire corpus constitute a unique resource that we
+  make available as an itermediate result of the project.\\ 
+\newline 
+\Keywords{Topic Model, Non-standard Chinese, Phylogenetics, \TODO{?more?}} 
+}
 
 \begin{document}
 \maketitleabstract
@@ -82,39 +86,38 @@ in the writings of Buddhist \TODO{schools} behave akin to characters in
 biological evolution and thus make it possible to infer the history of
 these \TODO{schools} from this type of data alone.
 
-  The \textit{SAT Daiz{\=o}ky{\=o} Text Database} \cite{***} is a
-  digitalized collection of 2500 years of Buddhist canonical texts. We
-  chose this corpus because it concentrate on a limited number of
-  relatively clearly defined topics, the texts are dated, and the history
-  and relationships of the Buddhist schools that produced them has been
-  extensively investigated. It therefore is ideally suited for a
-  chronological analysis and computational results can be compared directly
-  to established knowledge. 
+The \textit{SAT Daiz{\=o}ky{\=o} Text Database} \cite{***} is a digitalized
+collection of 2500 years of Buddhist canonical texts. We chose this corpus
+because it concentrate on a limited number of relatively clearly defined
+topics, the texts are dated, and the history and relationships of the
+Buddhist schools that produced them has been extensively investigated. It
+therefore is ideally suited for a chronological analysis and computational
+results can be compared directly to established knowledge.
 
-  The topical structure of the Daiz{\=o}ky{\=o} is investigated using topic
-  modelling \cite{Blei12}, a machine learning technique that aims at
-  discovering abstract ``topics'' that occur in a collection of documents
-  defined in terms of the overrepresented appearance of certain subsets of
-  words. In the process, we create a unique resource. First, we need to
-  annotate single words, word types and a parse tree in order to identify
-  topics and important textual properties. Second, topics are annotated in
-  the texts.  In particular word segmentation and POS-tagging task is not
-  straightforward since the text source is not standard Chinese. Since
-  available tools and models for the automatic annotation of Chinese text
-  resources are conditioned to standard modern chinese, we had to create
-  new separation and tagging models based on comparable annotated resources
-  \cite{Lee14}.  We will contribute the processed corpus as a resource for
-  future research on original texts reflecting different buddhist
-  \TODO{schools}.
+The topical structure of the Daiz{\=o}ky{\=o} is investigated using topic
+modelling \cite{Blei12}, a machine learning technique that aims at
+discovering abstract ``topics'' that occur in a collection of documents
+defined in terms of the overrepresented appearance of certain subsets of
+words. In the process, we create a unique resource. First, we need to
+annotate single words, word types and a parse tree in order to identify
+topics and important textual properties. Second, topics are annotated in
+the texts.  In particular word segmentation and POS-tagging task is not
+straightforward since the text source is not standard Chinese. Since
+available tools and models for the automatic annotation of Chinese text
+resources are conditioned to standard modern chinese, we had to create new
+separation and tagging models based on comparable annotated resources
+\cite{Lee14}.  We will contribute the processed corpus as a resource for
+future research on original texts reflecting different buddhist
+\TODO{schools}.
 
-  \textbf{Outline of the computational workflow.} The corpus was acquired
-  from the web presence by a web scraper. The content is semi-structured by
-  references to the source and the sentence number for each line of
-  text. We retained this structure for our final corpus and created a
-  source format that links every line of text to its unique identifier
-  drawn from the original web source. We defined one scraped web page as a
-  single document for the modelling process since this also reflects the
-  text structure of the original sources.
+\textbf{Outline of the computational workflow.} The corpus was acquired
+from the web presence by a web scraper. The content is semi-structured by
+references to the source and the sentence number for each line of text. We
+retained this structure for our final corpus and created a source format
+that links every line of text to its unique identifier drawn from the
+original web source. We defined one scraped web page as a single document
+for the modelling process since this also reflects the text structure of
+the original sources.
     
   The main tools for token separation and POS-tagging of the sources where
   the Stanford Word Segmenter and the Stanford POS-Tagger. Both
