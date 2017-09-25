@@ -1,40 +1,72 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage[utf8]{inputenc}
+%%%% FROM TEMPLATE %%%%
+\usepackage{lrec}
+\usepackage{multibib}
+\newcites{languageresource}{Language Resources}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{soul}
+% for eps graphics
+\usepackage{epstopdf}
+\usepackage[latin1]{inputenc}
+\usepackage{hyperref}
+\usepackage{xstring}
+\newcommand{\secref}[1]{\StrSubstitute{\getrefnumber{#1}}{.}{ }}
 
-\usepackage{natbib}
+%%%% OUR DEFS
 \usepackage{color}
 \newcommand{\TODO}[1]{\begingroup\color{red}#1\endgroup}
 \newcommand{\PFS}[1]{\begingroup\color{blue}#1\endgroup}
 
-
-%opening
 \title{Does a Phylogeny of Topics Recapitulate the History of Ideas and 
   Institutions? \\
   A Computational Abuse of the Daiz{\=o}ky{\=o}}
-\author{}
+
+\name{\TODO{in no particular Order:} 
+Nancy Retzlaff$^1$, Andreas Niekler$^1$, ..., Christoph Kleine$^3$,
+Peter F. Stadler$^{1,2,4}$}
+
+\address{MPI Mathematics in the Science, 
+         Universit{\"a}t Leipzig, 
+         The Santa Fe Institute\\
+         Address1, Address2, Address3\\
+         \{nancy,studla\}@bioinf.uni-leipzig.de, 
+         eisioriginal@gmail.com,
+         c.kleine@uni-leipzig.de@bioinf.uni-leipzig.de\\
+} 
+\date{} 
+
+
+\abstract{
+Each article must include an abstract of 150 to 200 words in Times New Roman
+9 with interlinear spacing of 10 pt. The heading Abstract should be
+centred, font Times New Roman 10 bold. This short abstract will also be used
+for producing the Booklet of Abstracts (PDF) containing the abstracts of all
+papers presented at the Conference. \\ \newline \Keywords{keyword1, keyword2,
+keyword3} }
 
 \begin{document}
+\maketitleabstract
 
-\maketitle
+\section{Introduction}
 
-\begin{abstract}
-  Computational approaches have in recent years attempted to reproduce
-  workflows in the humanities with the aim to leverage to power of
-  increasingly large amount of data. The most prolific area of application
-  is historical linguistics, where quantitative methods have had a long
-  tradition in the field. \TODO{[oder sowas, Nancy, add a couple of
-    refs]}. Other types of question in historical sciences also appear to
-  be amenable to quantitative computational investigations. In
-  \cite{Laubichler:13}, for the authors advocate a computational big data
-  approach to the history of sciences. \cite{Rockmore:16} recently
-  investigated the reuse of ideal in national constitutions at this
-  level. In the present study we ask whether historical relationships are
-  reflected in and can be reconstructed using methods adapted from
-  phylogenetics. More specifically, we ask whether the presence and
-  abundance high level concepts in the writings of Buddhist \TODO{schools}
-  behave akin to characters in biological evolution and thus make it
-  possible to infer the history of these \TODO{schools} from this type of
-  data alone. 
+
+Computational approaches have in recent years attempted to reproduce
+workflows in the humanities with the aim to leverage to power of
+increasingly large amount of data. The most prolific area of application is
+historical linguistics, where quantitative methods have had a long
+tradition in the field. \TODO{[oder sowas, Nancy, add a couple of
+  refs]}. Other types of question in historical sciences also appear to be
+amenable to quantitative computational investigations. In
+\cite{Laubichler:13}, for the authors advocate a computational big data
+approach to the history of sciences. \cite{Rockmore:16} recently
+investigated the reuse of ideal in national constitutions at this level. In
+the present study we ask whether historical relationships are reflected in
+and can be reconstructed using methods adapted from phylogenetics. More
+specifically, we ask whether the presence and abundance high level concepts
+in the writings of Buddhist \TODO{schools} behave akin to characters in
+biological evolution and thus make it possible to infer the history of
+these \TODO{schools} from this type of data alone.
 
   The \textit{SAT Daiz{\=o}ky{\=o} Text Database} \cite{***} is a
   digitalized collection of 2500 years of Buddhist canonical texts. We
@@ -185,7 +217,7 @@ thresholded variant thereof. Such distance measures also have the added value th
 tree-like structure of the data can be assessed a priori, i.e., without having to construct 
 a phylogenetic tree \cite{Misof:14}. Thresholding the values of L(S,T) themselves, on the other 
 hand, converts the data into discrete characters corresponding to the topics, with 
-“overrepresented” and “underrepresented”  as binary states. In this form, the data can 
+``overrepresented'' and ``underrepresented''  as binary states. In this form, the data can 
 analyzed with maximum parsimony methods. In principle, they are also amenable to maximum 
 likelihood methods; however, at this point it seems difficult to argue for specific 
 probabilistic transition models (but see \cite{Hruschka:15} for a fully probabilistic model in 
@@ -197,11 +229,26 @@ the context of natural language evolution).
 
 \TODO{- checking their consistency to insights from history or religious findings, and hence validating the hypothesis stated above.}
 
+\subsubsection{When Citing Language Resources}
+
+When citing language resources, we recommend to proceed in the same way to
+bibliographical references, except that, in order to make them appear in
+a separate section, you need to use the \texttt{\\citelanguageresource} tag.
+Thus, a language resource should be cited as \citelanguageresource{speecon}.
 
 
-\end{abstract}
 
-\bibliographystyle{abbrvnat}
-\bibliography{AbstractLREC.bib}
+\section{Bibliographical References}
+\label{main:ref}
+
+\bibliographystyle{lrec}
+\bibliography{AbstractLREC}
+
+
+\section{Language Resource References}
+\label{lr:ref}
+\bibliographystylelanguageresource{lrec}
+\bibliographylanguageresource{xample}
+
 
 \end{document}
