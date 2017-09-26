@@ -32,7 +32,7 @@ Peter F. Stadler$^{1,2,4}$}
          Address1, Address2, Address3\\
          \{nancy,studla\}@bioinf.uni-leipzig.de, 
          eisioriginal@gmail.com,
-         c.kleine@uni-leipzig.de@bioinf.uni-leipzig.de\\
+         c.kleine@uni-leipzig.de\\
 } 
 \date{} 
 
@@ -86,7 +86,7 @@ in the writings of Buddhist \TODO{schools} behave akin to characters in
 biological evolution and thus make it possible to infer the history of
 these \TODO{schools} from this type of data alone.
 
-The \textit{SAT Daiz{\=o}ky{\=o} Text Database} \cite{***} is a digitalized
+The \textit{SAT Daiz{\=o}ky{\=o} Text Database} \cite{Daizokyo} is a digitalized
 collection of 2500 years of Buddhist canonical texts. We chose this corpus
 because it concentrate on a limited number of relatively clearly defined
 topics, the texts are dated, and the history and relationships of the
@@ -109,6 +109,8 @@ separation and tagging models based on comparable annotated resources
 \cite{Lee14}.  We will contribute the processed corpus as a resource for
 future research on original texts reflecting different buddhist
 \TODO{schools}.
+
+\TODO{Blei12 = blei2012probabilistic in .bib?}
 
 \textbf{Outline of the computational workflow.} The corpus was acquired
 from the web presence by a web scraper. The content is semi-structured by
@@ -134,6 +136,9 @@ the original sources.
 
   We constructed topic models for the processed corpus using the well
   understood LDA approach \cite{Blei03,GriffithStyvers05}.
+  
+  \TODO{Blei03 = blei2003latent or blei2003modeling, in .bib? and GriffithStyvers05
+  = griffiths2005integrating in .bib?}
 
 %%%  ENDE DER AUSBAUSTRECKE 
 
@@ -167,7 +172,7 @@ the topic assignments with a prior semantic clustering of the word
 association that can be found in the text [Lancichinetti15]. It can be
 shown the the topic reproducibility is raised by 15\% without losing
 interpretability. We tested several topic solutions and assessed the
-qualöity measures. The results can be found in table 1. It shows that the
+quality measures. The results can be found in table 1. It shows that the
 optimal solution is XXX which is also confirmed by the word intrusion tests
 and quality checks carried out by domain experts.
 
@@ -204,14 +209,16 @@ interpretation decisions. The result is documented in figure 1 where we present 
 translated samples from our text source.
 
 - description of technicalities:
-  * corpus
-  * preprocessing: crawl data and segmentation of words
-  * extraction of features through topic modelling
-  * determination of different buddhist "schools" (technical term here please)
-  * naming the actual topics (technical term here as well and why it is so hard to do it)
-  * assessment of the quantity of phylogenetic signal
-  * discrimination of volatile (rapidly changing) topics versus persistent topic 
+\begin{itemize}
+ \item corpus
+ \item preprocessing: crawl data and segmentation of words
+ \item extraction of features through topic modelling
+ \item determination of different buddhist "schools" (technical term here please)
+ \item naming the actual topics (technical term here as well and why it is so hard to do it)
+ \item assessment of the quantity of phylogenetic signal
+ \item discrimination of volatile (rapidly changing) topics versus persistent topic 
   (mostly staying the same) 
+\end{itemize}
 
 
 Now we are in a position to quantify, for each school, the emphasis given a particular 
