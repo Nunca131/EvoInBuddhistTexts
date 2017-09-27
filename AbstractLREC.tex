@@ -14,9 +14,10 @@
 \newcommand{\secref}[1]{\StrSubstitute{\getrefnumber{#1}}{.}{ }}
 
 %%%% OUR DEFS
-\usepackage{color}
+\usepackage{xcolor}
 \newcommand{\TODO}[1]{\begingroup\color{red}#1\endgroup}
 \newcommand{\PFS}[1]{\begingroup\color{blue}#1\endgroup}
+\newcommand{\NR}[1]{\begingroup\color{orange}#1\endgroup}
 
 \title{Does a Phylogeny of Topics Recapitulate the History of Ideas and 
   Institutions? \\
@@ -55,12 +56,12 @@ Peter F. Stadler$^{1,2,4}$}
   We use Topic Modelling to describe the contents of documents in an
   unsupervised and unbiased manner. To this end, we first had to train the
   Stanford Word Segmenter and POS-Tagger for use on the Daiz{\=o}ky{\=o},
-  which does not conform to available models for standard Chinese. The
+  which does not conform to available models for Standard Chinese. The
   annotation of single words, word types and a parse tree as well as the
   topic annotation of entire corpus constitute a unique resource that we
   make available as an itermediate result of the project.\\ 
 \newline 
-\Keywords{Topic Model, Non-standard Chinese, Phylogenetics, \TODO{?more?}} 
+\Keywords{Topic Model, Non-Standard Chinese, Phylogenetics, \TODO{?more?}} 
 }
 
 \begin{document}
@@ -73,8 +74,9 @@ Computational approaches have in recent years attempted to reproduce
 workflows in the humanities with the aim to leverage to power of
 increasingly large amount of data. The most prolific area of application is
 historical linguistics, where quantitative methods have had a long
-tradition in the field. \TODO{[oder sowas, Nancy, add a couple of
-  refs]}. Other types of question in historical sciences also appear to be
+tradition in the field (for example see 
+\cite{levinson_tools_2012,gray_language-tree_2003,croft2008evolutionary}). 
+Other types of question in historical sciences also appear to be
 amenable to quantitative computational investigations. In
 \cite{Laubichler:13}, for the authors advocate a computational big data
 approach to the history of sciences. \cite{Rockmore:16} recently
@@ -86,7 +88,7 @@ in the writings of Buddhist \TODO{schools} behave akin to characters in
 biological evolution and thus make it possible to infer the history of
 these \TODO{schools} from this type of data alone.
 
-The \textit{SAT Daiz{\=o}ky{\=o} Text Database} \cite{Daizokyo} is a digitalized
+The \textit{SAT Daiz{\=o}ky{\=o} Text Database} \citelanguageresource{Daizokyo} is a digitalized
 collection of 2500 years of Buddhist canonical texts. We chose this corpus
 because it concentrate on a limited number of relatively clearly defined
 topics, the texts are dated, and the history and relationships of the
@@ -102,18 +104,22 @@ words. In the process, we create a unique resource. First, we need to
 annotate single words, word types and a parse tree in order to identify
 topics and important textual properties. Second, topics are annotated in
 the texts.  In particular word segmentation and POS-tagging task is not
-straightforward since the text source is not standard Chinese. Since
+straightforward since the text source is not Standard Chinese. Since
 available tools and models for the automatic annotation of Chinese text
-resources are conditioned to standard modern chinese, we had to create new
+resources are conditioned to \NR{(modern)} Standard Chinese, we had to create new
 separation and tagging models based on comparable annotated resources
 \cite{Lee14}.  We will contribute the processed corpus as a resource for
 future research on original texts reflecting different buddhist
 \TODO{schools}.
 
-\TODO{Blei12 = blei2012probabilistic in .bib?}
+\TODO{Blei12 = blei2012probabilistic in .bib? and Lee14}
 
-\textbf{Outline of the computational workflow.} The corpus was acquired
-from the web presence by a web scraper. The content is semi-structured by
+\textbf{Outline of the computational workflow.} \NR{As text ressource we 
+used the \textit{SAT Daiz{\=o}ky{\=o} Text Database}. Unfortunately, the data presented on 
+\cite{Daizokyo} did not contain any punctuation marks and was, therefore,
+unsuited for topic modeling. Hence, we chose \TODO{\cite{DaiCD}} where the 
+corpus was represented in XML format. We automatically obtained the plain texts and 
+manually reencoded the files for further processing.} The content is semi-structured by
 references to the source and the sentence number for each line of text. We
 retained this structure for our final corpus and created a source format
 that links every line of text to its unique identifier drawn from the
@@ -143,51 +149,50 @@ the original sources.
 %%%  ENDE DER AUSBAUSTRECKE 
 
 We considered multiple quality ensuring techniques in
-order to infer an optimal model. Those steps include the assessment of the
+order to infer an optimal model. \NR{These} steps include the assessment of the
 topic interpretability and the topic reliability. Both are part of a
 transparent and reproducible methodology setup in topic model based content
-research.  In detail the interpretability can be asses by two
-measures. With the coherence measure [cohen] we can determine the
+research.  In detail the interpretability can be assessed by two
+measures\NR{: (a) w}ith the coherence measure \cite{cohen} we can determine the
 specificity of the topics in terms of uniqueness of the topic distributions
-for each topic. With the word intrusion test [Wang] we implement a human
+for each topic\NR{; (b) w}ith the word intrusion test \cite{Wang} we implement a human
 judgment on the topic quality to the model selection process. Both measures
 deliver a comparable quality assessment w.r.t. different topic
 solutions. With those measures we do not only rely on measures as
-perplexity, likelihood or human judgment in order to select a good topic
-solution but also on quantities which asses the topic solution with a novel
-measures on the semantic interpretability. Reproducibility is also an issue
+perplexity, likelihood, or human judgment in order to select a good topic
+solution but also on quantities which assess the topic solution with a novel
+measure on the semantic interpretability. Reproducibility is also an issue
 when applying topic models to text. Existing studies show that in repeated
 runs of the LDA inference on the same dataset reproduce only 65 - 80\% of
-the topic solutions throughout all runs [Niekler12, Koltsov14]. For content
+the topic solutions throughout all runs \cite{Niekler12,Koltsov14}. For content
 research which strongly relies on the interpretation of the topics this is
 unsatisfactory and topic selection criterias are hard to explain in a
-transparent and reproducible manner. Instead we applies techniques which
+transparent and reproducible manner. Instead we applied techniques which
 raise the topic stability throughout different runs of the model inference,
-known as regularization. One very promising approach to influence the
+known as regularization. One  very promising approach is to influence the
 initialization of the inference. Normally, we initialize the topic
-assignments beforehand randomly. On the other hand we could seed the random
+assignments beforehand randomly \NR{whereas o}n the other hand we could seed the random
 initialization and hopefully find a similar topic solution throughout
 different runs. However, the best solution so far is the initialization of
 the topic assignments with a prior semantic clustering of the word
-association that can be found in the text [Lancichinetti15]. It can be
+association that can be found in the text \cite{Lancichinetti15}. It can be
 shown the the topic reproducibility is raised by 15\% without losing
 interpretability. We tested several topic solutions and assessed the
-quality measures. The results can be found in table 1. It shows that the
-optimal solution is XXX which is also confirmed by the word intrusion tests
+quality measures. The results can be found in \TODO{Table 1}. It shows that the
+optimal solution is \TODO{XXX} which is also confirmed by the word intrusion tests
 and quality checks carried out by domain experts.
 
+\TODO{cites: cohen, Wang, Niekler12, Koltsov14, Lancichinetti15}
 
 
 
-
-  Our main tools for the assessment of the topic structure is topic
-  modelling .  We will apply the well understood LDA Model to
+\TODO{Should following paragraph still be included?} \NR{First part sounds 
+redundant. Maybe include second part later as an aim of this approach?}
+  [Our main tools for the assessment of the topic structure is topic
+  modelling.  We will apply the well understood LDA Model to
   the ressources. The resulting topical structure can then be used to
   reveal the topic preference of different times and \TODO{schools} encoded
-  in the text.
-
-  \TODO{(the paragraph above is just over 200 words, so 2000 words is about
-    4 pages or so, hence are allowed a bit of detail!)}
+  in the text.]
 
 
 
@@ -203,9 +208,9 @@ the topics for later reference. We can decide between different approaches. On o
 we could use term ordering techniques for topic modelling to sort the topic via 
 probability, frequency, or specificity (similar as tf/idf but for topics). This leads to 
 interpretable word lists which could be used as unique identifiers for the topics. On
-the other hand we could augment the description with a detailed commentation on the 
-semantic properties. Such a detailed description ensures the later understanding for 
-interpretation decisions. The result is documented in figure 1 where we present 3 
+the other hand we could augment the description with a detailed commentation \NR{commentary?} on the 
+semantic properties. Such a detailed description \NR{documentation?} ensures the later understanding of 
+interpretation decisions. The result is documented in \TODO{Figure 1} where we present 3 
 translated samples from our text source.
 
 - description of technicalities:
@@ -225,13 +230,13 @@ Now we are in a position to quantify, for each school, the emphasis given a part
 topic. 
 
 
-In the simplest case, we compute the relative fraction p(S,T) of the texts from schools S 
-that pertain to topic T. Since some topics are inherently more prevalent than others, we 
-rather use the corresponding log-likelihood L(S,T) = log p(S,T)/p(T). Each school is thus
+In the simplest case, we compute the relative fraction $p(S,T)$ of the texts from schools S 
+that pertain to topic $T$. Since some topics are inherently more prevalent than others, we 
+rather use the corresponding log-likelihood $L(S,T) = \log p(S,T)/p(T)$. Each \TODO{school} is thus
 represented by a vector of topic importances that can be used to evaluate differences 
-between schools. The determine p(S,T) and p(T) utilizing the rank-1 metric. In detail we 
+between \TODO{schools}. The determine $p(S,T)$ and $p(T)$ utilizing the rank-1 metric. In detail we 
 count for every pager, e.g. document, the most probably topic and aggregate the counts 
-for all documents w.r.t the school S and topic S. 
+for all documents w.r.t the school $S$ and topic $T$. 
 
 
 We intend to explore both distance based methods and character-based methods commonly 
@@ -239,7 +244,7 @@ used in phylogenetics. Simple distance measures that can be expected to behave a
 additively are the sum over the absolute values of differences of topic importance or a 
 thresholded variant thereof. Such distance measures also have the added value that the 
 tree-like structure of the data can be assessed a priori, i.e., without having to construct 
-a phylogenetic tree \cite{Misof:14}. Thresholding the values of L(S,T) themselves, on the other 
+a phylogenetic tree \cite{Misof:14}. Thresholding the values of $L(S,T)$ themselves, on the other 
 hand, converts the data into discrete characters corresponding to the topics, with 
 ``overrepresented'' and ``underrepresented''  as binary states. In this form, the data can 
 analyzed with maximum parsimony methods. In principle, they are also amenable to maximum 
@@ -271,8 +276,8 @@ Thus, a language resource should be cited as \citelanguageresource{speecon}.
 
 \section{Language Resource References}
 \label{lr:ref}
+\TODO{bibitem is "broken", anyone any idea how to fix it?}
 \bibliographystylelanguageresource{lrec}
-\bibliographylanguageresource{xample}
-
+\bibliographylanguageresource{AbstractLREC}
 
 \end{document}
