@@ -107,11 +107,9 @@ task is not straightforward since the text source is not Standard
 Chinese. Since available tools and models for the automatic annotation of
 Chinese text resources are conditioned to \NR{(modern)} Standard Chinese,
 we had to create new separation and tagging models based on comparable
-annotated resources \cite{Lee14}.  We will contribute the processed corpus
+annotated resources \cite{Wong:16}.  We will contribute the processed corpus
 as a resource for future research on original texts reflecting different
 buddhist \TODO{schools}.
-
-\TODO{ .bib? and Lee14}
 
 \section{Methods and Workflow} 
 
@@ -134,8 +132,7 @@ buddhist \TODO{schools}.
     
 \paragraph{Text Annotation.} 
   The main tools for token separation and POS-tagging of the sources where
-  the Stanford Word Segmenter and the Stanford POS-Tagger
-  \TODO{\cite{***}}. Both distributions contain pre-trained models Chinese
+  the Stanford Word Segmenter and the Stanford POS-Tagger {\cite{manning:2014}. Both distributions contain pre-trained models Chinese
   text processing. The performance of these models, however, proved
   unsatisfactory for the Daiz{\=o}ky{\=o} corpus. As a consequence we had
   to retrain the tools with an comparable annotated text source conforming
@@ -148,20 +145,16 @@ buddhist \TODO{schools}.
 
 \paragraph{Topic Modelling.}
   We constructed topic models for the processed corpus using the well
-  understood LDA approach \cite{Blei03,GriffithStyvers05}.
-  
-  \TODO{Blei03 = blei2003latent or blei2003modeling, in .bib? and GriffithStyvers05
-  = griffiths2005integrating in .bib?}
-
+  understood Latent Dirichlet Allocation (LDA) approach \cite{blei:2012,griffiths:2004}. In our corpus it is a free decision where a document boundary could be set.  For LDA the document is the main context unit and thus, we have to set document boundaries for the algorithm. \TODO{What does on file resp. page in our sources mean -- if we set this as documents how do we justify this -- do they represent paragraphs or chapters?}
 
 We considered multiple quality ensuring techniques in
 order to infer an optimal model. \NR{These} steps include the assessment of the
 topic interpretability and the topic reliability. Both are part of a
 transparent and reproducible methodology setup in topic model based content
 research.  In detail the interpretability can be assessed by two
-measures\NR{: (a) w}ith the coherence measure \cite{cohen} we can determine the
+measures\NR{: (a) w}ith the coherence measure \cite{newman:2010} we can determine the
 specificity of the topics in terms of uniqueness of the topic distributions
-for each topic\NR{; (b) w}ith the word intrusion test \cite{Wang} we implement a human
+for each topic\NR{; (b) w}ith the word intrusion test \cite{chang:2009} we implement a human
 judgment on the topic quality to the model selection process. Both measures
 deliver a comparable quality assessment w.r.t. different topic
 solutions. With those measures we do not only rely on measures as
@@ -170,7 +163,7 @@ solution but also on quantities which assess the topic solution with a novel
 measure on the semantic interpretability. Reproducibility is also an issue
 when applying topic models to text. Existing studies show that in repeated
 runs of the LDA inference on the same dataset reproduce only 65 - 80\% of
-the topic solutions throughout all runs \cite{Niekler12,Koltsov14}. For content
+the topic solutions throughout all runs \cite{niekler:2012,koltcov:2016}. For content
 research which strongly relies on the interpretation of the topics this is
 unsatisfactory and topic selection criterias are hard to explain in a
 transparent and reproducible manner. Instead we applied so-called
@@ -181,16 +174,15 @@ assignments beforehand randomly, \NR{whereas o}n the other hand we could seed th
 initialization and hopefully find a similar topic solution throughout
 different runs. However, the best solution so far is the initialization of
 the topic assignments with a prior semantic clustering of the word
-association that can be found in the text \cite{Lancichinetti15}. It can be
+association that can be found in the text \cite{lancichinetti:2015}. It can be
 shown the the topic reproducibility is raised by 15\% without losing
 interpretability. We tested several topic solutions and assessed the
-quality measures. The results can be found in \TODO{Table 1}. It shows that the
-optimal solution is \TODO{XXX} which is also confirmed by the word intrusion tests
-and quality checks carried out by domain experts.
+quality measures. 
 
-\TODO{cites: cohen, Wang, Niekler12, Koltsov14, Lancichinetti15}
-
-
+%Should be integrated in the full paper!!!
+%The results can be found in \TODO{Table 1}. It shows that the
+%optimal solution is \TODO{XXX} which is also confirmed by the word intrusion tests
+%and quality checks carried out by domain experts.
 
 \TODO{Should following paragraph still be included?} \NR{First part sounds 
 redundant. Maybe include second part later as an aim of this approach?}
@@ -218,20 +210,12 @@ translated samples from our text source.
 
 \paragraph{Assignment of Topics to Documents and Schools.} 
 
-\PFS{Topics are initially assigned to individual documents.}
-\TODO{describe how a small number of topics are assigned to each document
-  What exactly are we considering a document, i.e., when is topic $T$ 
-  important for a document $D$?} 
+\PFS{Topics are initially assigned to individual documents.} We do this by examining  the document-topic distribution $p(\mathbf{z}|D) (\Theta_D)$ given by the $\Theta$-Parameter of the LDA model for each document $D$. Therein, we could sort the topics by their probability w.r.t. the document $D$. We assign a topic index to each document analogous to the rank-1 metric \cite{evans:2014}. This metric determines a primary topic for each document by assigning  the most probable topic from the distribution $p(\mathbf{z}|D) (\Theta_D)$ as primary topic.  This method is particularly compelling when documents are short. Utilizing this procedure prevents "`Background"'-topics, such as domain specific recurring contexts, to be overrated in the topic statistics. We alter this approach by selecting the 2 most probably topics for each document in order to preserve the  \NR{multi-topic-properties} given by the LDA model. An alternative would be the aggregation of the probability mass for each document but this will lead to skewed statistics due to the "`Background"'-topics which contribute a little amount of probability to each document in the corpus.
 
-The simplest approach is to utilize the rank-1 metric, that is, to
-associate with each document $D$ only the single the most probable topic
-$T(D)$. This method is particularly compelling when documents are short. 
-\TODO{very briefly mention alternative?}
-
-The next step is to aggregate of the document-wise topic data in order to
+The next step is to aggregate of the document-wise topic index in order to
 describe topical preferences of individual schools.  In the simplest case,
 we compute the relative fraction $p(S,T)$ of documents from schools $S$ for
-which topic $T$ in an important topic in the sense defined above.  Since
+which topic $T$ in assigned as the primary or secondary topic in the sense defined above.  Since
 some topics are inherently more prevalent than others, we rather use the
 corresponding log-likelihood $L(S,T) = \log p(S,T)/p(T)$, where $p(T)$ is
 the fraction of documents in the entire corpus for which $T$ is
