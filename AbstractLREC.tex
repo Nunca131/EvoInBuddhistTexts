@@ -68,7 +68,6 @@ Peter F. Stadler$^{1,2,4}$}
 
 \section{Introduction}
 
-
 Computational approaches have in recent years attempted to reproduce
 workflows in the humanities with the aim to leverage to power of
 increasingly large amount of data. The most prolific area of application is
@@ -87,65 +86,73 @@ in the writings of Buddhist \TODO{schools} behave akin to characters in
 biological evolution and thus make it possible to infer the history of
 these \TODO{schools} from this type of data alone.
 
-The \textit{SAT Daiz{\=o}ky{\=o} Text Database} \citelanguageresource{Daizokyo} is a digitalized
-collection of 2500 years of Buddhist canonical texts. We chose this corpus
-because it concentrate on a limited number of relatively clearly defined
-topics, the texts are dated, and the history and relationships of the
-Buddhist schools that produced them has been extensively investigated. It
-therefore is ideally suited for a chronological analysis and computational
-results can be compared directly to established knowledge.
+The \textit{SAT Daiz{\=o}ky{\=o} Text Database}
+\citelanguageresource{Daizokyo} is a digitalized collection of 2500 years
+of Buddhist canonical texts. We chose this corpus because it concentrate on
+a limited number of relatively clearly defined topics, the texts are dated,
+and the history and relationships of the Buddhist schools that produced
+them has been extensively investigated. It therefore is ideally suited for
+a chronological analysis and computational results can be compared directly
+to established knowledge.
 
 The topical structure of the Daiz{\=o}ky{\=o} is investigated using topic
-modelling \cite{Blei12}, a machine learning technique that aims at
-discovering abstract ``topics'' that occur in a collection of documents
-defined in terms of the overrepresented appearance of certain subsets of
-words. In the process, we create a unique resource. First, we need to
-annotate single words, word types and a parse tree in order to identify
-topics and important textual properties. Second, topics are annotated in
-the texts.  In particular word segmentation and POS-tagging task is not
-straightforward since the text source is not Standard Chinese. Since
-available tools and models for the automatic annotation of Chinese text
-resources are conditioned to \NR{(modern)} Standard Chinese, we had to create new
-separation and tagging models based on comparable annotated resources
-\cite{Lee14}.  We will contribute the processed corpus as a resource for
-future research on original texts reflecting different buddhist
-\TODO{schools}.
+modelling \cite{blei2012probabilistic}, a machine learning technique that
+aims at discovering abstract ``topics'' that occur in a collection of
+documents defined in terms of the overrepresented appearance of certain
+subsets of words. In the process, we create a unique resource. First, we
+need to annotate single words, word types and a parse tree in order to
+identify topics and important textual properties. Second, topics are
+annotated in the texts.  In particular word segmentation and POS-tagging
+task is not straightforward since the text source is not Standard
+Chinese. Since available tools and models for the automatic annotation of
+Chinese text resources are conditioned to \NR{(modern)} Standard Chinese,
+we had to create new separation and tagging models based on comparable
+annotated resources \cite{Lee14}.  We will contribute the processed corpus
+as a resource for future research on original texts reflecting different
+buddhist \TODO{schools}.
 
-\TODO{Blei12 = blei2012probabilistic in .bib? and Lee14}
+\TODO{ .bib? and Lee14}
 
-\textbf{Outline of the computational workflow.} \NR{As text ressource we 
-used the \textit{SAT Daiz{\=o}ky{\=o} Text Database}. Unfortunately, the data presented on 
-\citelanguageresource{Daizokyo} did not contain any punctuation marks and was, therefore,
-unsuited for topic modeling. Hence, we chose \TODO{\cite{DaiCD}} where the 
-corpus was represented in XML format. We automatically obtained the plain texts and 
-manually reencoded the files for further processing.} The content is semi-structured by
-references to the source and the sentence number for each line of text. We
-retained this structure for our final corpus and created a source format
-that links every line of text to its unique identifier drawn from the
-original web source. We defined one scraped web page as a single document
-for the modelling process since this also reflects the text structure of
-the original sources.
+\section{Methods and Workflow} 
+
+\paragraph{Data Source.} The \textit{SAT Daiz{\=o}ky{\=o} Text
+    Database} \citelanguageresource{Daizokyo} does not contain any
+  punctuation marks and therefore was not suitable for as input for topic
+  modeling in this form. The presentation of the corpus in XML format
+  \TODO{\cite{DaiCD}} therefore was converted to a plain text format.
+  
+  We manually reencoded the files for further processing.
+  \TODO{NANCY, be more specific: what needed to be recoded?} 
+
+  The resulting corpus is semi-structured by references to the source and
+  the sentence number for each line of text. We retained this structure for
+  our final corpus and created a source format that links every line of
+  text to its unique identifier drawn from the original web source. We
+  defined one scraped web page as a single document for the modelling
+  process since this also reflects the text structure of the original
+  sources.
     
+\paragraph{Text Annotation.} 
   The main tools for token separation and POS-tagging of the sources where
-  the Stanford Word Segmenter and the Stanford POS-Tagger. Both
-  distributions contain pre-trained models Chinese text processing. The
-  performance of these models, however, proved unsatisfactory for the
-  Daiz{\=o}ky{\=o} corpus. As a consequence we had to retrain the tools
-  with an comparable annotated text source conforming to the properties,
-  word forms, and \TODO{systectic} features of our target text source.  We
-  identified \cite{Lee:12,Wong:16} as text sources in processable form that
-  were well suited for retrain our the models for POS-tagging and 
-  word separation. The trained models are included with the
+  the Stanford Word Segmenter and the Stanford POS-Tagger
+  \TODO{\cite{***}}. Both distributions contain pre-trained models Chinese
+  text processing. The performance of these models, however, proved
+  unsatisfactory for the Daiz{\=o}ky{\=o} corpus. As a consequence we had
+  to retrain the tools with an comparable annotated text source conforming
+  to the properties, word forms, and \TODO{systectic} features of our
+  target text source.  We identified \cite{Lee:12,Wong:16} as text sources
+  in processable form that were well suited for retrain our the models for
+  POS-tagging and word separation. The trained models are included with the
   processed version of the \textit{SAT Daiz{\=o}ky{\=o} Text Database},
-  which we published \TODO{URL?}.  
+  which we published \TODO{URL?}.
 
+\paragraph{Topic Modelling.}
   We constructed topic models for the processed corpus using the well
   understood LDA approach \cite{Blei03,GriffithStyvers05}.
   
   \TODO{Blei03 = blei2003latent or blei2003modeling, in .bib? and GriffithStyvers05
   = griffiths2005integrating in .bib?}
 
-%%%  ENDE DER AUSBAUSTRECKE 
 
 We considered multiple quality ensuring techniques in
 order to infer an optimal model. \NR{These} steps include the assessment of the
@@ -166,11 +173,11 @@ runs of the LDA inference on the same dataset reproduce only 65 - 80\% of
 the topic solutions throughout all runs \cite{Niekler12,Koltsov14}. For content
 research which strongly relies on the interpretation of the topics this is
 unsatisfactory and topic selection criterias are hard to explain in a
-transparent and reproducible manner. Instead we applied techniques which
-raise the topic stability throughout different runs of the model inference,
-known as regularization. One  very promising approach is to influence the
+transparent and reproducible manner. Instead we applied so-called
+regularization techniques that
+raise the topic stability throughout different runs of the model inference. One  very promising approach is to influence the
 initialization of the inference. Normally, we initialize the topic
-assignments beforehand randomly \NR{whereas o}n the other hand we could seed the random
+assignments beforehand randomly, \NR{whereas o}n the other hand we could seed the random
 initialization and hopefully find a similar topic solution throughout
 different runs. However, the best solution so far is the initialization of
 the topic assignments with a prior semantic clustering of the word
@@ -194,15 +201,11 @@ redundant. Maybe include second part later as an aim of this approach?}
   in the text.]
 
 
-
-
-
-
-
 Quality CHECKS Prof. Kleine
 
-Through this methodology we developed a sound and robust topic solution which can in turn
-be used to clarify out research hypothesis. In this step of our research we can now name
+Through this methodology we developed a sound and robust topic solution
+which can in turn be used to clarify out research hypothesis.
+In this step of our research we can now name
 the topics for later reference. We can decide between different approaches. On one hand 
 we could use term ordering techniques for topic modelling to sort the topic via 
 probability, frequency, or specificity (similar as tf/idf but for topics). This leads to 
@@ -212,57 +215,85 @@ semantic properties. Such a detailed description \NR{documentation?} ensures the
 interpretation decisions. The result is documented in \TODO{Figure 1} where we present 3 
 translated samples from our text source.
 
-- description of technicalities:
-\begin{itemize}
- \item corpus
- \item preprocessing: crawl data and segmentation of words
- \item extraction of features through topic modelling
- \item determination of different buddhist "schools" (technical term here please)
- \item naming the actual topics (technical term here as well and why it is so hard to do it)
- \item assessment of the quantity of phylogenetic signal
- \item discrimination of volatile (rapidly changing) topics versus persistent topic 
-  (mostly staying the same) 
-\end{itemize}
+
+\paragraph{Assignment of Topics to Documents and Schools.} 
+
+\PFS{Topics are initially assigned to individual documents.}
+\TODO{describe how a small number of topics are assigned to each document
+  What exactly are we considering a document, i.e., when is topic $T$ 
+  important for a document $D$?} 
+
+The simplest approach is to utilize the rank-1 metric, that is, to
+associate with each document $D$ only the single the most probable topic
+$T(D)$. This method is particularly compelling when documents are short. 
+\TODO{very briefly mention alternative?}
+
+The next step is to aggregate of the document-wise topic data in order to
+describe topical preferences of individual schools.  In the simplest case,
+we compute the relative fraction $p(S,T)$ of documents from schools $S$ for
+which topic $T$ in an important topic in the sense defined above.  Since
+some topics are inherently more prevalent than others, we rather use the
+corresponding log-likelihood $L(S,T) = \log p(S,T)/p(T)$, where $p(T)$ is
+the fraction of documents in the entire corpus for which $T$ is
+important. This measure quantifies, for each \TODO{school}, the emphasis
+given a particular topic.
 
 
-Now we are in a position to quantify, for each school, the emphasis given a particular 
-topic. 
+\section{Phylogenetics on Topic Data} 
+
+Each \TODO{school} is represented by a vector of topic importances that can
+be used to evaluate differences between \TODO{schools}.  Thresholding
+$L(S,T)$ converts the topic importances into binary vectors that correspond
+to the so-called character tables that play a central role in
+phylogenetics. Each \TODO{school} (taxon) is the characterized by the
+``presence'' (overrepresentation) or ``absence'' of a character (topic).
+In this form, the data can analyzed with maximum parsimony methods, a
+understood class of computational methods from computational phylogenetics
+designed to infer tree models. In principle, they are also amenable to
+maximum likelihood methods; however, at this point it seems difficult to
+argue for specific probabilistic transition models (but see
+\cite{Hruschka:15} for a fully probabilistic model in the context of
+natural language evolution). Alternatively, distances between importance
+vectors can be computed. There may then be used as input to distance-based
+methods of tree reconstruction. Simple distance measures that can be
+expected to behave approximately additively are the sum over the absolute
+values of differences of topic importance or a thresholded variant
+thereof. Such distance measures also have the added value that the
+tree-like structure of the data can be assessed a priori, i.e., without
+having to construct a phylogenetic tree \cite{Misof:14}.
+
+In most biological applications only taxa that a alive in the present are
+observable. Even when applied to paleontological data, only leaves of the
+tree are observable, while all interior nodes are only inferred. In the
+case of historical records, however, true ancestor may be represented in
+the data. In the case of the Daiz{\=o}ky{\=o}, as dense, dated corpus is
+available that can be subdivided into time slices that then take the role
+of individual taxa. These now may also represent interior nodes of the
+tree. Although methods to deal with this type of phylogenetic problem are
+not well developed, efficient algorithms for both distance-based and the
+character-bases variants of the problem are available \cite{Telles:13} and
+have been applied successfully to document data. 
 
 
-In the simplest case, we compute the relative fraction $p(S,T)$ of the texts from schools S 
-that pertain to topic $T$. Since some topics are inherently more prevalent than others, we 
-rather use the corresponding log-likelihood $L(S,T) = \log p(S,T)/p(T)$. Each \TODO{school} is thus
-represented by a vector of topic importances that can be used to evaluate differences 
-between \TODO{schools}. The determine $p(S,T)$ and $p(T)$ utilizing the rank-1 metric. In detail we 
-count for every pager, e.g. document, the most probably topic and aggregate the counts 
-for all documents w.r.t the school $S$ and topic $T$. 
 
 
-We intend to explore both distance based methods and character-based methods commonly 
-used in phylogenetics. Simple distance measures that can be expected to behave approximately
-additively are the sum over the absolute values of differences of topic importance or a 
-thresholded variant thereof. Such distance measures also have the added value that the 
-tree-like structure of the data can be assessed a priori, i.e., without having to construct 
-a phylogenetic tree \cite{Misof:14}. Thresholding the values of $L(S,T)$ themselves, on the other 
-hand, converts the data into discrete characters corresponding to the topics, with 
-``overrepresented'' and ``underrepresented''  as binary states. In this form, the data can 
-analyzed with maximum parsimony methods. In principle, they are also amenable to maximum 
-likelihood methods; however, at this point it seems difficult to argue for specific 
-probabilistic transition models (but see \cite{Hruschka:15} for a fully probabilistic model in 
-the context of natural language evolution).
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 \TODO{- are there topics distinguishable due to geography or history?}
 
 \TODO{- checking their consistency to insights from history or religious findings, and hence validating the hypothesis stated above.}
-
-\subsubsection{When Citing Language Resources}
-
-When citing language resources, we recommend to proceed in the same way to
-bibliographical references, except that, in order to make them appear in
-a separate section, you need to use the \texttt{\\citelanguageresource} tag.
-Thus, a language resource should be cited as \citelanguageresource{speecon}.
 
 
 
