@@ -43,24 +43,24 @@ Peter F. Stadler$^{1,2,4}$}
   research areas in the the humanities, in particular linguistics and
   historical sciences, to make use of the rapidly increasing amount of data
   that have become available in machine-readable form. Here we use the
-  \textit{SAT Daiz{\=o}ky{\=o} Text Database}, a digitalized collection of
+  \textit{Chinese Electronic Tripitaka Collection}, a digitalized collection of
   2500 years of Buddhist canonical texts, to ask whether historical
   relationships are reflected in the texts in such a way that they can be
   reconstructed using methods adapted from phylogenetics. More
   specifically, we ask whether the presence and abundance high level
-  concepts in the writings of Buddhist \TODO{schools} behave akin to
+  concepts in the writings of Buddhist schools of thought behave akin to
   characters in biological evolution and thus make it possible to infer
   their relationsships of descent from this type of data alone.
   %
   We use Topic Modelling to describe the contents of documents in an
   unsupervised and unbiased manner. To this end, we first had to train the
-  Stanford Word Segmenter and POS-Tagger for use on the Daiz{\=o}ky{\=o},
+  Stanford Word Segmenter and POS-Tagger for use on the \textit{Chinese Electronic Tripitaka Collection},
   which does not conform to available models for Standard Chinese. The
   annotation of single words, word types and a parse tree as well as the
   topic annotation of entire corpus constitute a unique resource that we
   make available as an itermediate result of the project.\\ 
 \newline 
-\Keywords{Topic Model, Non-Standard Chinese, Phylogenetics, \TODO{?more?}} 
+\Keywords{Topic Model, Non-Standard Chinese, Phylogenetics, Buddhism} 
 }
 
 \begin{document}
@@ -82,20 +82,24 @@ investigated the reuse of ideal in national constitutions at this level. In
 the present study we ask whether historical relationships are reflected in
 and can be reconstructed using methods adapted from phylogenetics. More
 specifically, we ask whether the presence and abundance high level concepts
-in the writings of Buddhist \TODO{schools} behave akin to characters in
+in the writings of Buddhist schools of thought behave akin to characters in
 biological evolution and thus make it possible to infer the history of
-these \TODO{schools} from this type of data alone.
+these schools from this type of data alone.
 
-The \textit{SAT Daiz{\=o}ky{\=o} Text Database}
-\citelanguageresource{Daizokyo} is a digitalized collection of 2500 years
-of Buddhist canonical texts. We chose this corpus because it concentrate on
-a limited number of relatively clearly defined topics, the texts are dated,
-and the history and relationships of the Buddhist schools that produced
-them has been extensively investigated. It therefore is ideally suited for
+The \textit{Chinese Electronic Tripitaka Collection}, digitalized by the Chinese 
+Buddhist Text Association (CBETA) based in Taibei (Taiwan), is the most 
+comprehensive collection of authoritative Buddhist texts written in or 
+translated into Chinese over many centuries from roughly in the late 2nd 
+century A.D. in more than 15.000 scrolls (Chinese Buddhist Electronic 
+Text Association, 2016). It includes various text corpora mostly edited 
+in the early 20th century for scholarly purposes, the most important 
+being the \emph{Taish{\=o} shinsh{\=u} daiz{\=o}ky{\=o}}, published in 100 volumes (of which 
+vols. 1-55 and vol. 85 were digitalized) by Japanese scholars between 
+1924 and 1934 \cite{Takakusu J. and Watanabe K., 1924-1934}. It therefore is ideally suited for
 a chronological analysis and computational results can be compared directly
 to established knowledge.
 
-The topical structure of the Daiz{\=o}ky{\=o} is investigated using topic
+The topical structure of the \textit{Chinese Electronic Tripitaka Collection} is investigated using topic
 modelling \cite{blei2012probabilistic}, a machine learning technique that
 aims at discovering abstract ``topics'' that occur in a collection of
 documents defined in terms of the overrepresented appearance of certain
@@ -109,12 +113,12 @@ Chinese text resources are conditioned to \NR{(modern)} Standard Chinese,
 we had to create new separation and tagging models based on comparable
 annotated resources \cite{Wong:16}.  We will contribute the processed corpus
 as a resource for future research on original texts reflecting different
-buddhist \TODO{schools}.
+buddhist schools.
 
 \section{Methods and Workflow} 
 
-\paragraph{Data Source.} The \textit{SAT Daiz{\=o}ky{\=o} Text
-    Database} \citelanguageresource{Daizokyo} does not contain any
+\paragraph{Data Source.} The \textit{Chinese Electronic Tripitaka Collection} 
+\cite{} does not contain any
   punctuation marks and therefore was not suitable for as input for topic
   modeling in this form. The presentation of the corpus in XML format
   \TODO{\cite{DaiCD}} therefore was converted to a plain text format.
@@ -132,7 +136,8 @@ buddhist \TODO{schools}.
     
 \paragraph{Text Annotation.} 
   The main tools for token separation and POS-tagging of the sources where
-  the Stanford Word Segmenter and the Stanford POS-Tagger {\cite{manning:2014}. Both distributions contain pre-trained models Chinese
+  the Stanford Word Segmenter and the Stanford POS-Tagger {\cite{manning:2014}. 
+  Both distributions contain pre-trained models Chinese
   text processing. The performance of these models, however, proved
   unsatisfactory for the Daiz{\=o}ky{\=o} corpus. As a consequence we had
   to retrain the tools with an comparable annotated text source conforming
@@ -140,12 +145,17 @@ buddhist \TODO{schools}.
   target text source.  We identified \cite{Lee:12,Wong:16} as text sources
   in processable form that were well suited for retrain our the models for
   POS-tagging and word separation. The trained models are included with the
-  processed version of the \textit{SAT Daiz{\=o}ky{\=o} Text Database},
+  processed version of the \textit{Chinese Electronic Tripitaka Collection},
   which we published \TODO{URL?}.
 
 \paragraph{Topic Modelling.}
   We constructed topic models for the processed corpus using the well
-  understood Latent Dirichlet Allocation (LDA) approach \cite{blei:2012,griffiths:2004}. In our corpus it is a free decision where a document boundary could be set.  For LDA the document is the main context unit and thus, we have to set document boundaries for the algorithm. \TODO{What does on file resp. page in our sources mean -- if we set this as documents how do we justify this -- do they represent paragraphs or chapters?}
+  understood Latent Dirichlet Allocation (LDA) approach 
+  \cite{blei:2012,griffiths:2004}. In our corpus it is a free decision where 
+  a document boundary could be set.  For LDA the document is the main context 
+  unit and thus, we have to set document boundaries for the algorithm. 
+  \TODO{What does on file resp. page in our sources mean -- if we set this as 
+  documents how do we justify this -- do they represent paragraphs or chapters?}
 
 We considered multiple quality ensuring techniques in
 order to infer an optimal model. \NR{These} steps include the assessment of the
@@ -246,7 +256,7 @@ thereof. Such distance measures also have the added value that the
 tree-like structure of the data can be assessed a priori, i.e., without
 having to construct a phylogenetic tree \cite{Misof:14}.
 
-In most biological applications only taxa that a alive in the present are
+In most biological applications only taxa that are alive in the present are
 observable. Even when applied to paleontological data, only leaves of the
 tree are observable, while all interior nodes are only inferred. In the
 case of historical records, however, true ancestor may be represented in
@@ -271,7 +281,14 @@ have been applied successfully to document data.
 
 
 
+Takakusu Junjir{\=o} and Watanabe Kaikyoku, eds. 
+(1924-1934). Taish{\=o} shinsh{\=u} daiz{\=o}ky{\=o}. 100 vols. Tokyo: Taish{\=o} 
+Issaiky{\=o} Kank{\=o}kai.
 
+Chinese Buddhist Electronic Text Association (CBETA). 2016. “CBETA 
+Chinese Electronic Tripiṭaka Collection Version June 2016: Contents.” 
+Accessed September 28, 2017. 
+http://www.cbeta.org/cbreader/help/content_e.htm.
 
 
 
