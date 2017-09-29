@@ -95,7 +95,7 @@ Text Association, 2016). It includes various text corpora mostly edited
 in the early 20th century for scholarly purposes, the most important 
 being the \emph{Taish{\=o} shinsh{\=u} daiz{\=o}ky{\=o}}, published in 100 volumes (of which 
 vols. 1-55 and vol. 85 were digitalized) by Japanese scholars between 
-1924 and 1934 \cite{Takakusu J. and Watanabe K., 1924-1934}. It therefore is ideally suited for
+1924 and 1934 \cite{Juniro:24-34}. It therefore is ideally suited for
 a chronological analysis and computational results can be compared directly
 to established knowledge.
 
@@ -120,11 +120,12 @@ buddhist schools.
 \paragraph{Data Source.} The \textit{Chinese Electronic Tripitaka Collection} 
 \cite{} does not contain any
   punctuation marks and therefore was not suitable for as input for topic
-  modeling in this form. The presentation of the corpus in XML format
-  \TODO{\cite{DaiCD}} therefore was converted to a plain text format.
+  modeling in this form. The presentation of the corpus in XML format 
+  \cite{CBETA:16}  therefore was converted to a plain text format.
   
-  We manually reencoded the files for further processing.
-  \TODO{NANCY, be more specific: what needed to be recoded?} 
+  We manually reencoded the files for further processing \NR{since the data
+  was not uniformly stored in UTF-8 format}.
+%   \TODO{NANCY, be more specific: what needed to be recoded?} 
 
   The resulting corpus is semi-structured by references to the source and
   the sentence number for each line of text. We retained this structure for
@@ -199,7 +200,7 @@ redundant. Maybe include second part later as an aim of this approach?}
   [Our main tools for the assessment of the topic structure is topic
   modelling.  We will apply the well understood LDA Model to
   the ressources. The resulting topical structure can then be used to
-  reveal the topic preference of different times and \TODO{schools} encoded
+  reveal the topic preference of different times and schools encoded
   in the text.]
 
 
@@ -229,17 +230,17 @@ which topic $T$ in assigned as the primary or secondary topic in the sense defin
 some topics are inherently more prevalent than others, we rather use the
 corresponding log-likelihood $L(S,T) = \log p(S,T)/p(T)$, where $p(T)$ is
 the fraction of documents in the entire corpus for which $T$ is
-important. This measure quantifies, for each \TODO{school}, the emphasis
+important. This measure quantifies, for each school, the emphasis
 given a particular topic.
 
 
 \section{Phylogenetics on Topic Data} 
 
-Each \TODO{school} is represented by a vector of topic importances that can
-be used to evaluate differences between \TODO{schools}.  Thresholding
+Each school of thought is represented by a vector of topic importances that can
+be used to evaluate differences between schools. Thresholding
 $L(S,T)$ converts the topic importances into binary vectors that correspond
 to the so-called character tables that play a central role in
-phylogenetics. Each \TODO{school} (taxon) is the characterized by the
+phylogenetics. Each school (taxon) is the characterized by the
 ``presence'' (overrepresentation) or ``absence'' of a character (topic).
 In this form, the data can analyzed with maximum parsimony methods, a
 understood class of computational methods from computational phylogenetics
@@ -268,20 +269,6 @@ not well developed, efficient algorithms for both distance-based and the
 character-bases variants of the problem are available \cite{Telles:13} and
 have been applied successfully to document data. 
 
-
-
-
-
-
-
-
-
-
-
-
-\cite{Juniro:24-34} 
-
-\cite{CBETA:16} 
 
 
 
