@@ -26,7 +26,9 @@
 \name{Nancy Retzlaff$^1$, Andreas Niekler$^2$, Gerhard Heyer$^2$, Christoph Kleine$^3$,
 Peter F. Stadler$^{1,2,4}$}
 
-\address{$^1$MPI Mathematics in the Science, Inselstra{\ss}e 22, D-04103 Leipzig, Germany,\\
+\address{$^1$MPI Mathematics in the Science, Inselstra{\ss}e 22, D-04103
+  Leipzig
+, Germany,\\
          $^2$Universit{\"a}t Leipzig, Augustusplatz 10, D-04109 Leipzig, Germany, \\
          $^3$Universit{\"a}t Leipzig, Schillerstra{\ss}e 6, D-04109 Leipzig, Germany \\
          $^4$The Santa Fe Institute, 1399 Hyde Park Rd, Santa Fe, NM 87501, USA\\
@@ -99,7 +101,10 @@ vols. 1-55 and vol. 85 were digitalized) by Japanese scholars between
 a chronological analysis and computational results can be compared directly
 to established knowledge.
 
-The topical structure of the \textit{Chinese Electronic Tripitaka Collection} is investigated using topic
+
+
+The topical structure of the \textit{Chinese Electronic Tripitaka
+  Collection} \citelanguageresource{CBETA:16} is investigated using topic
 modelling \cite{blei2012probabilistic}, a machine learning technique that
 aims at discovering abstract ``topics'' that occur in a collection of
 documents defined in terms of the overrepresented appearance of certain
@@ -109,19 +114,19 @@ identify topics and important textual properties. Second, topics are
 annotated in the texts.  In particular word segmentation and POS-tagging
 task is not straightforward since the text source is not Standard
 Chinese. Since available tools and models for the automatic annotation of
-Chinese text resources are conditioned to \NR{(modern)} Standard Chinese,
-we had to create new separation and tagging models based on comparable
-annotated resources \cite{Wong:16}.  We will contribute the processed corpus
-as a resource for future research on original texts reflecting different
-buddhist schools.
+Chinese text resources are conditioned to (modern) Standard Chinese, we had
+to create new separation and tagging models based on comparable annotated
+resources \citelanguageresource{Wong:16}.  We will contribute the processed
+corpus as a resource for future research on original texts reflecting
+different buddhist schools.
 
 \section{Methods and Workflow} 
 
-\paragraph{Data Source.} The \textit{Chinese Electronic Tripitaka Collection} 
-\cite{} does not contain any
-  punctuation marks and therefore was not suitable for as input for topic
-  modeling in this form. The presentation of the corpus in XML format 
-  \cite{CBETA:16}  therefore was converted to a plain text format.
+\paragraph{Data Source.} The \textit{Chinese Electronic Tripitaka
+  Collection} \cite{} does not contain any punctuation marks and therefore
+was not suitable for as input for topic modeling in this form. The
+presentation of the corpus in XML format \citelanguageresource{CBETA:16}
+therefore was converted to a plain text format.
   
   We manually reencoded the files for further processing \NR{since the data
   was not uniformly stored in UTF-8 format}.
@@ -143,11 +148,11 @@ text processing. The performance of these models, however, proved
 unsatisfactory for the Daiz{\=o}ky{\=o} corpus. As a consequence we had to
 retrain the tools with an comparable annotated text source conforming to
 the properties, word forms, and \TODO{systectic} features of our target
-text source.  We identified \cite{Lee:12,Wong:16} as text sources in
-processable form that were well suited for retrain our the models for
-POS-tagging and word separation. The trained models are included with the
-processed version of the \textit{Chinese Electronic Tripitaka Collection},
-which we published \TODO{URL?}.
+text source.  We identified \citelanguageresource{Lee:12,Wong:16} as text
+sources in processable form that were well suited for retrain our the
+models for POS-tagging and word separation. The trained models are included
+with the processed version of the \textit{Chinese Electronic Tripitaka
+  Collection}, which we published \TODO{URL?}.
 
 \paragraph{Topic Modelling.}
   We constructed topic models for the processed corpus using the well
@@ -279,6 +284,7 @@ have been applied successfully to document data.
 \TODO{- checking their consistency to insights from history or religious findings, and hence validating the hypothesis stated above.}
 
 
+%\citelanguageresource{speecon}
 
 \section{Bibliographical References}
 \label{main:ref}
@@ -289,7 +295,12 @@ have been applied successfully to document data.
 
 \section{Language Resource References}
 \label{lr:ref}
-\TODO{bibitem is "broken", anyone any idea how to fix it?}
+
+\TODO{all works: you need to run\\
+\texttt{bibtex languageresource}\\
+ in addition! NOTE: you need to remove 
+\texttt{*aux} and \texttt{*bbl} files since these are used incrementally }
+
 \bibliographystylelanguageresource{lrec}
 \bibliographylanguageresource{AbstractLREC}
 
