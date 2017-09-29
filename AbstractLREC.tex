@@ -23,8 +23,9 @@
   Institutions? \\
   A Computational Abuse of the Daiz{\=o}ky{\=o}}
 
-\name{Nancy Retzlaff$^1$, Andreas Niekler$^2$, Gerhard Heyer$^2$, Christoph Kleine$^3$,
-Peter F. Stadler$^{1,2,4}$}
+\name{Nancy Retzlaff$^1$, Andreas Niekler$^2$, 
+  Gerhard Heyer$^2$, Christoph Kleine$^3$,
+  Peter F. Stadler$^{1,2,4}$}
 
 \address{$^1$MPI Mathematics in the Science, Inselstra{\ss}e 22, D-04103
   Leipzig
@@ -45,10 +46,10 @@ Peter F. Stadler$^{1,2,4}$}
   research areas in the the humanities, in particular linguistics and
   historical sciences, to make use of the rapidly increasing amount of data
   that have become available in machine-readable form. Here we use the
-  \textit{Chinese Electronic Tripitaka Collection}, a digitalized collection of
-  2500 years of Buddhist canonical texts, to ask whether historical
-  relationships are reflected in the texts in such a way that they can be
-  reconstructed using methods adapted from phylogenetics. More
+  \textit{Chinese Electronic Tripi{\d{t}}aka Collection}, a digitalized
+  collection of 2500 years of Buddhist canonical texts, to ask whether
+  historical relationships are reflected in the texts in such a way that
+  they can be reconstructed using methods adapted from phylogenetics. More
   specifically, we ask whether the presence and abundance high level
   concepts in the writings of Buddhist schools of thought behave akin to
   characters in biological evolution and thus make it possible to infer
@@ -56,14 +57,14 @@ Peter F. Stadler$^{1,2,4}$}
   %
   We use Topic Modelling to describe the contents of documents in an
   unsupervised and unbiased manner. To this end, we first had to train the
-  Stanford Word Segmenter and POS-Tagger for use on the \textit{Chinese Electronic Tripitaka Collection},
-  which does not conform to available models for Standard Chinese. The
-  annotation of single words, word types and a parse tree as well as the
-  topic annotation of entire corpus constitute a unique resource that we
-  make available as an itermediate result of the project.\\ 
-\newline 
-\Keywords{Topic Model, Non-Standard Chinese, Phylogenetics, Buddhism} 
-}
+  Stanford Word Segmenter and POS-Tagger for use on the \textit{Chinese
+    Electronic Tripi{\d{t}}aka Collection}, which does not conform to
+  available models for Standard Chinese. The annotation of single words,
+  word types and a parse tree as well as the topic annotation of entire
+  corpus constitute a unique resource that we
+  make available as an itermediate result of the project.\\
+  \newline \Keywords{Topic Model, Non-Standard Chinese, Phylogenetics,
+    Buddhism} }
 
 \begin{document}
 \maketitleabstract
@@ -88,22 +89,22 @@ in the writings of Buddhist schools of thought behave akin to characters in
 biological evolution and thus make it possible to infer the history of
 these schools from this type of data alone.
 
-The \textit{Chinese Electronic Tripitaka Collection}, digitalized by the Chinese 
-Buddhist Text Association (CBETA) based in Taibei (Taiwan), is the most 
-comprehensive collection of authoritative Buddhist texts written in or 
-translated into Chinese over many centuries from roughly in the late 2nd 
-century A.D. in more than 15.000 scrolls (Chinese Buddhist Electronic 
-Text Association, 2016). It includes various text corpora mostly edited 
-in the early 20th century for scholarly purposes, the most important 
-being the \emph{Taish{\=o} shinsh{\=u} daiz{\=o}ky{\=o}}, published in 100 volumes (of which 
-vols. 1-55 and vol. 85 were digitalized) by Japanese scholars between 
-1924 and 1934 \cite{Juniro:24-34}. It therefore is ideally suited for
-a chronological analysis and computational results can be compared directly
-to established knowledge.
+The \textit{Chinese Electronic Tripi{\d{t}}aka Collection}, digitalized by
+the Chinese Buddhist Text Association (CBETA) based in Taibei (Taiwan), is
+the most comprehensive collection of authoritative Buddhist texts written
+in or translated into Chinese over many centuries from roughly in the late
+2nd century A.D. in more than 15.000 scrolls (Chinese Buddhist Electronic
+Text Association, 2016). It includes various text corpora mostly edited in
+the early 20th century for scholarly purposes, the most important being the
+\emph{Taish{\=o} shinsh{\=u} daiz{\=o}ky{\=o}}, published in 100 volumes
+(of which vols. 1-55 and vol. 85 were digitalized) by Japanese scholars
+between 1924 and 1934 \cite{Juniro:24-34}. It therefore is ideally suited
+for a chronological analysis and computational results can be compared
+directly to established knowledge.
 
 
 
-The topical structure of the \textit{Chinese Electronic Tripitaka
+The topical structure of the \textit{Chinese Electronic Tripi{\d{t}}aka
   Collection} \citelanguageresource{CBETA:16} is investigated using topic
 modelling \cite{blei2012probabilistic}, a machine learning technique that
 aims at discovering abstract ``topics'' that occur in a collection of
@@ -122,7 +123,7 @@ different buddhist schools.
 
 \section{Methods and Workflow} 
 
-\paragraph{Data Source.} The \textit{Chinese Electronic Tripitaka
+\paragraph{Data Source.} The \textit{Chinese Electronic Tripi{\d{t}}aka
   Collection} \cite{} does not contain any punctuation marks and therefore
 was not suitable for as input for topic modeling in this form. The
 presentation of the corpus in XML format \citelanguageresource{CBETA:16}
@@ -151,8 +152,8 @@ the properties, word forms, and \TODO{systectic} features of our target
 text source.  We identified \citelanguageresource{Lee:12,Wong:16} as text
 sources in processable form that were well suited for retrain our the
 models for POS-tagging and word separation. The trained models are included
-with the processed version of the \textit{Chinese Electronic Tripitaka
-  Collection}, which we published \TODO{URL?}.
+with the processed version of the \textit{Chinese Electronic
+  Tripi{\d{t}}aka Collection}, which we published \TODO{URL?}.
 
 \paragraph{Topic Modelling.}
   We constructed topic models for the processed corpus using the well
@@ -163,104 +164,118 @@ with the processed version of the \textit{Chinese Electronic Tripitaka
   \TODO{What does on file resp. page in our sources mean -- if we set this as 
   documents how do we justify this -- do they represent paragraphs or chapters?}
 
-We considered multiple quality ensuring techniques in
-order to infer an optimal model. \NR{These} steps include the assessment of the
-topic interpretability and the topic reliability. Both are part of a
-transparent and reproducible methodology setup in topic model based content
-research.  In detail the interpretability can be assessed by two
-measures\NR{: (a) w}ith the coherence measure \cite{newman:2010} we can determine the
-specificity of the topics in terms of uniqueness of the topic distributions
-for each topic\NR{; (b) w}ith the word intrusion test \cite{chang:2009} we implement a human
-judgment on the topic quality to the model selection process. Both measures
-deliver a comparable quality assessment w.r.t. different topic
-solutions. With those measures we do not only rely on measures as
+We considered multiple quality ensuring techniques in order to infer an
+optimal model. These steps include the assessment of the topic
+interpretability and the topic reliability. Both are part of a transparent
+and reproducible methodology setup in topic model based content research.
+In detail the interpretability can be assessed by two measures: (a) the
+coherence measure \cite{newman:2010} determines the specificity of the
+topics in terms of uniqueness of the topic distributions for each topic;
+(b) the word intrusion test \cite{chang:2009} employs a human judgment on
+the topic quality to guide the model selection process. Both measures
+deliver a comparable quality assessment w.r.t.\ different topic
+solutions. With these measures we do not only rely on measures such as
 perplexity, likelihood, or human judgment in order to select a good topic
-solution but also on quantities which assess the topic solution with a novel
+solution but also on quantities that assess the topic solution with a novel
 measure on the semantic interpretability. Reproducibility is also an issue
-when applying topic models to text. Existing studies show that in repeated
-runs of the LDA inference on the same dataset reproduce only 65 - 80\% of
-the topic solutions throughout all runs \cite{niekler:2012,koltcov:2016}. For content
-research which strongly relies on the interpretation of the topics this is
-unsatisfactory and topic selection criterias are hard to explain in a
-transparent and reproducible manner. Instead we applied so-called
-regularization techniques that
-raise the topic stability throughout different runs of the model inference. One  very promising approach is to influence the
-initialization of the inference. Normally, we initialize the topic
-assignments beforehand randomly, \NR{whereas o}n the other hand we could seed the random
-initialization and hopefully find a similar topic solution throughout
-different runs. However, the best solution so far is the initialization of
-the topic assignments with a prior semantic clustering of the word
-association that can be found in the text \cite{lancichinetti:2015}. It can be
-shown the the topic reproducibility is raised by 15\% without losing
-interpretability. We tested several topic solutions and assessed the
-quality measures. 
+when applying topic models to text. Existing studies show that LDA
+inference run repeatedly on the same dataset reproduces only 65\% to 80\%
+of the topic solutions across all runs \cite{niekler:2012,koltcov:2016}.
+For content research, which strongly relies on the interpretation of the
+topics, this is of course unsatisfactory. Furthermore, topic selection
+criteria are hard to explain in a transparent and reproducible manner. As
+an alternative we therefore applied so-called regularization techniques
+that raise the topic stability throughout different runs of the model
+inference. One very promising approach is to influence the initialization
+of the inference. Normally, we initialize the topic assignments beforehand
+randomly, whereas on the other hand we could seed the random initialization
+and hopefully find a similar topic solution throughout different
+runs. However, the best solution so far is the initialization of the topic
+assignments with a prior semantic clustering of the word association that
+can be found in the text \cite{lancichinetti:2015}. It can be shown the the
+topic reproducibility is raised by 15\% without losing interpretability. We
+tested several topic solutions and assessed the quality measures.
 
 %Should be integrated in the full paper!!!
 %The results can be found in \TODO{Table 1}. It shows that the
 %optimal solution is \TODO{XXX} which is also confirmed by the word intrusion tests
 %and quality checks carried out by domain experts.
 
-\TODO{Should following paragraph still be included?} \NR{First part sounds 
-redundant. Maybe include second part later as an aim of this approach?}
-  [Our main tools for the assessment of the topic structure is topic
-  modelling.  We will apply the well understood LDA Model to
-  the ressources. The resulting topical structure can then be used to
-  reveal the topic preference of different times and schools encoded
-  in the text.]
+\TODO{Quality CHECKS Prof. Kleine} 
 
+\PFS{In summary, we have developed a sound and robust topic solution.
+  Computationally identified topics need to be named, i.e., associated with
+  a interpretable content for later reference.}  We can decide between
+different approaches. On one hand we could use term ordering techniques for
+topic modelling to sort the topic via probability, frequency, or
+specificity (similar as tf/idf, but for topics). This leads to
+interpretable word lists which could be used as unique identifiers for the
+topics. Alternatively, we could augment the topic description with a
+detailed commentation on the semantic properties. \PFS{Such a detailed
+  description also documents the reasons of the decisions taken in deciding
+  on the topic name.} The result is documented in Fig.~\ref{fig:topixampl}
+where we present 3 translated samples from our text source.
 
-Quality CHECKS Prof. Kleine
-
-Through this methodology we developed a sound and robust topic solution
-which can in turn be used to clarify out research hypothesis.
-In this step of our research we can now name
-the topics for later reference. We can decide between different approaches. On one hand 
-we could use term ordering techniques for topic modelling to sort the topic via 
-probability, frequency, or specificity (similar as tf/idf but for topics). This leads to 
-interpretable word lists which could be used as unique identifiers for the topics. On
-the other hand we could augment the description with a detailed commentation \NR{commentary?} on the 
-semantic properties. Such a detailed description \NR{documentation?} ensures the later understanding of 
-interpretation decisions. The result is documented in \TODO{Figure 1} where we present 3 
-translated samples from our text source.
-
+\begin{figure}
+  \begin{center} 
+    \TODO{Three cool topics!} 
+  \end{center}
+  \caption{Something very intelligent here!}
+  \label{fig:topixampl}
+\end{figure}
 
 \paragraph{Assignment of Topics to Documents and Schools.} 
 
-\PFS{Topics are initially assigned to individual documents.} We do this by examining  the document-topic distribution $p(\mathbf{z}|D) (\Theta_D)$ given by the $\Theta$-Parameter of the LDA model for each document $D$. Therein, we could sort the topics by their probability w.r.t. the document $D$. We assign a topic index to each document analogous to the rank-1 metric \cite{evans:2014}. This metric determines a primary topic for each document by assigning  the most probable topic from the distribution $p(\mathbf{z}|D) (\Theta_D)$ as primary topic.  This method is particularly compelling when documents are short. Utilizing this procedure prevents "`Background"'-topics, such as domain specific recurring contexts, to be overrated in the topic statistics. We alter this approach by selecting the 2 most probably topics for each document in order to preserve the  \NR{multi-topic-properties} given by the LDA model. An alternative would be the aggregation of the probability mass for each document but this will lead to skewed statistics due to the "`Background"'-topics which contribute a little amount of probability to each document in the corpus.
+\PFS{Topics are initially assigned to individual documents.} We do this by
+examining the document-topic distribution $p(\mathbf{z}|D) (\Theta_D)$
+given by the $\Theta$-Parameter of the LDA model for each document
+$D$. Therein, we could sort the topics by their probability w.r.t.\ the
+document $D$. We assign a topic index to each document analogous to the
+rank-1 metric \cite{evans:2014}. This metric determines a primary topic for
+each document by assigning the most probable topic from the distribution
+$p(\mathbf{z}|D) (\Theta_D)$ as primary topic.  This method is particularly
+compelling when documents are short. Utilizing this procedure prevents
+``Background''-topics, such as domain specific recurring contexts, to be
+overrated in the topic statistics. We alter this approach by selecting the
+two most probable topics for each document in order to preserve the
+multi-topic-properties given by the LDA model. An alternative would be the
+aggregation of the probability mass for each document but this will lead to
+skewed statistics due to the ``Background''-topics, which have a small
+probability contribution in all documents, \PFS{and hence would appear
+  important in aggregation over the entire corpus.}
 
 The next step is to aggregate of the document-wise topic index in order to
 describe topical preferences of individual schools.  In the simplest case,
 we compute the relative fraction $p(S,T)$ of documents from schools $S$ for
-which topic $T$ in assigned as the primary or secondary topic in the sense defined above.  Since
-some topics are inherently more prevalent than others, we rather use the
-corresponding log-likelihood $L(S,T) = \log p(S,T)/p(T)$, where $p(T)$ is
-the fraction of documents in the entire corpus for which $T$ is
-important. This measure quantifies, for each school, the emphasis
-given a particular topic.
-
+which topic $T$ in assigned as the primary or secondary topic in the sense
+defined above.  Since some topics are inherently more prevalent than
+others, we rather use the corresponding log-likelihood $L(S,T) = \log
+p(S,T)/p(T)$, where $p(T)$ is the fraction of documents in the entire
+corpus for which $T$ is important. This measure quantifies, for each
+school, the emphasis given a particular topic.
 
 \section{Phylogenetics on Topic Data} 
 
-Each school of thought is represented by a vector of topic importances that can
-be used to evaluate differences between schools. Thresholding
-$L(S,T)$ converts the topic importances into binary vectors that correspond
-to the so-called character tables that play a central role in
-phylogenetics. Each school (taxon) is the characterized by the
-``presence'' (overrepresentation) or ``absence'' of a character (topic).
-In this form, the data can analyzed with maximum parsimony methods, a
-understood class of computational methods from computational phylogenetics
-designed to infer tree models. In principle, they are also amenable to
-maximum likelihood methods; however, at this point it seems difficult to
-argue for specific probabilistic transition models (but see
-\cite{Hruschka:15} for a fully probabilistic model in the context of
-natural language evolution). Alternatively, distances between importance
-vectors can be computed. There may then be used as input to distance-based
-methods of tree reconstruction. Simple distance measures that can be
-expected to behave approximately additively are the sum over the absolute
-values of differences of topic importance or a thresholded variant
-thereof. Such distance measures also have the added value that the
-tree-like structure of the data can be assessed a priori, i.e., without
-having to construct a phylogenetic tree \cite{Misof:14}.
+Each school of thought is represented by a vector of topic importances that
+can be used to evaluate differences between schools. Thresholding $L(S,T)$
+converts the topic importances into binary vectors that correspond to the
+so-called character tables that play a central role in phylogenetics. Each
+school (taxon) is the characterized by the ``presence''
+(overrepresentation) or ``absence'' of a character (topic).  In this form,
+the data can analyzed with maximum parsimony methods, a understood class of
+computational methods from computational phylogenetics designed to infer
+tree models. In principle, they are also amenable to maximum likelihood
+methods; however, at this point it seems difficult to argue for specific
+probabilistic transition models (but see \cite{Hruschka:15} for a fully
+probabilistic model in the context of natural language
+evolution). Alternatively, distances between importance vectors can be
+computed. There may then be used as input to distance-based methods of tree
+reconstruction. Simple distance measures that can be expected to behave
+approximately additively are the sum over the absolute values of
+differences of topic importance or a thresholded variant thereof. Such
+distance measures also have the added value that the tree-like structure of
+the data can be assessed a priori, i.e., without having to construct a
+phylogenetic tree \cite{Misof:14}.
 
 In most biological applications only taxa that are alive in the present are
 observable. Even when applied to paleontological data, only leaves of the
@@ -274,10 +289,9 @@ not well developed, efficient algorithms for both distance-based and the
 character-bases variants of the problem are available \cite{Telles:13} and
 have been applied successfully to document data. 
 
+\section{Concluding Remarks} 
 
-
-
-
+\TODO{maybe focus here mostly on what the resouce can used for?} 
 
 \TODO{- are there topics distinguishable due to geography or history?}
 
