@@ -102,8 +102,6 @@ between 1924 and 1934 \cite{Juniro:24-34}. It therefore is ideally suited
 for a chronological analysis and computational results can be compared
 directly to established knowledge.
 
-
-
 The topical structure of the \textit{Chinese Electronic Tripi{\d{t}}aka
   Collection} \citelanguageresource{CBETA:16} is investigated using topic
 modelling \cite{blei2012probabilistic}, a machine learning technique that
@@ -124,22 +122,19 @@ different buddhist schools.
 \section{Methods and Workflow} 
 
 \paragraph{Data Source.} The \textit{Chinese Electronic Tripi{\d{t}}aka
-  Collection} \cite{} does not contain any punctuation marks and therefore
-was not suitable for as input for topic modeling in this form. The
-presentation of the corpus in XML format \citelanguageresource{CBETA:16}
-therefore was converted to a plain text format.
+  Collection} does not contain any punctuation marks and therefore was not
+suitable for as input for topic modeling in this form. The presentation of
+the corpus in XML format \citelanguageresource{CBETA:16} therefore was
+converted to a plain text format.
   
-  We manually reencoded the files for further processing \NR{since the data
-  was not uniformly stored in UTF-8 format}.
-%   \TODO{NANCY, be more specific: what needed to be recoded?} 
-
-  The resulting corpus is semi-structured by references to the source and
-  the sentence number for each line of text. We retained this structure for
-  our final corpus and created a source format that links every line of
-  text to its unique identifier drawn from the original web source. We
-  defined one scraped web page as a single document for the modelling
-  process since this also reflects the text structure of the original
-  sources.
+We manually reencoded the files for further processing since the data was
+not uniformly stored in UTF-8 format The resulting corpus is
+semi-structured by references to the source and the sentence number for
+each line of text. We retained this structure for our final corpus and
+created a source format that links every line of text to its unique
+identifier drawn from the original web source. We defined one scraped web
+page as a single document for the modelling process since this also
+reflects the text structure of the original sources.
     
 \paragraph{Text Annotation.} 
 The main tools for token separation and POS-tagging of the sources where
@@ -195,13 +190,6 @@ assignments with a prior semantic clustering of the word association that
 can be found in the text \cite{lancichinetti:2015}. It can be shown the the
 topic reproducibility is raised by 15\% without losing interpretability. We
 tested several topic solutions and assessed the quality measures.
-
-%Should be integrated in the full paper!!!
-%The results can be found in \TODO{Table 1}. It shows that the
-%optimal solution is \TODO{XXX} which is also confirmed by the word intrusion tests
-%and quality checks carried out by domain experts.
-
-\TODO{Quality CHECKS Prof. Kleine} 
 
 \PFS{In summary, we have developed a sound and robust topic solution.
   Computationally identified topics need to be named, i.e., associated with
@@ -287,18 +275,14 @@ of individual taxa. These now may also represent interior nodes of the
 tree. Although methods to deal with this type of phylogenetic problem are
 not well developed, efficient algorithms for both distance-based and the
 character-bases variants of the problem are available \cite{Telles:13} and
-have been applied successfully to document data. 
+have been applied successfully to document data. \PFS{Our primary aim will
+  be to evaluate to what extent trees inferred from topic preferences of
+  different Buddhist schools of thought recapitulate known facts concerning
+  their history and origins.}
 
 \section{Concluding Remarks} 
 
-\TODO{maybe focus here mostly on what the resouce can used for?} 
-
-\TODO{- are there topics distinguishable due to geography or history?}
-
-\TODO{- checking their consistency to insights from history or religious findings, and hence validating the hypothesis stated above.}
-
-
-%\citelanguageresource{speecon}
+\TODO{maybe focus here very briefly on what the resource(s) can used for?} 
 
 \section{Bibliographical References}
 \label{main:ref}
