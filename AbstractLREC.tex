@@ -191,17 +191,17 @@ can be found in the text \cite{lancichinetti:2015}. It can be shown the the
 topic reproducibility is raised by 15\% without losing interpretability. We
 tested several topic solutions and assessed the quality measures.
 
-\PFS{In summary, we have developed a sound and robust topic solution.
+In summary, we have developed a sound and robust topic solution.
   Computationally identified topics need to be named, i.e., associated with
-  a interpretable content for later reference.}  We can decide between
+  a interpretable content for later reference.  We can decide between
 different approaches. On one hand we could use term ordering techniques for
 topic modelling to sort the topic via probability, frequency, or
 specificity (similar as tf/idf, but for topics). This leads to
 interpretable word lists which could be used as unique identifiers for the
 topics. Alternatively, we could augment the topic description with a
-detailed commentation on the semantic properties. \PFS{Such a detailed
+detailed commentation on the semantic properties. Such a detailed
   description also documents the reasons of the decisions taken in deciding
-  on the topic name.} The result is documented in Fig.~\ref{fig:topixampl}
+  on the topic name. The result is documented in Fig.~\ref{fig:topixampl}
 where we present 3 translated samples from our text source.
 
 \begin{figure}
@@ -214,7 +214,7 @@ where we present 3 translated samples from our text source.
 
 \paragraph{Assignment of Topics to Documents and Schools.} 
 
-\PFS{Topics are initially assigned to individual documents.} We do this by
+Topics are initially assigned to individual documents. We do this by
 examining the document-topic distribution $p(\mathbf{z}|D) (\Theta_D)$
 given by the $\Theta$-Parameter of the LDA model for each document
 $D$. Therein, we could sort the topics by their probability w.r.t.\ the
@@ -229,8 +229,8 @@ two most probable topics for each document in order to preserve the
 multi-topic-properties given by the LDA model. An alternative would be the
 aggregation of the probability mass for each document but this will lead to
 skewed statistics due to the ``Background''-topics, which have a small
-probability contribution in all documents, \PFS{and hence would appear
-  important in aggregation over the entire corpus.}
+probability contribution in all documents, and hence would appear
+  important in aggregation over the entire corpus.
 
 The next step is to aggregate of the document-wise topic index in order to
 describe topical preferences of individual schools.  In the simplest case,
@@ -275,10 +275,10 @@ of individual taxa. These now may also represent interior nodes of the
 tree. Although methods to deal with this type of phylogenetic problem are
 not well developed, efficient algorithms for both distance-based and the
 character-bases variants of the problem are available \cite{Telles:13} and
-have been applied successfully to document data. \PFS{Our primary aim will
+have been applied successfully to document data. Our primary aim will
   be to evaluate to what extent trees inferred from topic preferences of
   different Buddhist schools of thought recapitulate known facts concerning
-  their history and origins.}
+  their history and origins.
 
 \section{Concluding Remarks} 
 
